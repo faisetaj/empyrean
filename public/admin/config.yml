@@ -1,0 +1,286 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Edits are committed straight to main, which triggers a Netlify rebuild.
+# Switch to `publish_mode: editorial_workflow` if Kayla should draft first
+# and have changes reviewed before they go live.
+publish_mode: simple
+
+media_folder: public/images
+public_folder: /images
+
+site_url: https://www.empyreanbeauty.com
+logo_url: /images/Empyrean-Beauty-Revised-Large.png
+
+collections:
+  # ── Site-wide settings ────────────────────────────────────────
+  - name: settings
+    label: Site Settings
+    files:
+      - name: site
+        label: General & Homepage
+        file: src/content/site.json
+        format: json
+        fields:
+          - { label: Salon name, name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - {
+              label: Booking link (GlossGenius),
+              name: bookingUrl,
+              widget: string,
+              hint: "Paste your GlossGenius booking URL here. Every Book Now button on the site uses it.",
+            }
+          - { label: Phone, name: phone, widget: string }
+          - {
+              label: Old phone (unused),
+              name: phoneLegacy,
+              widget: string,
+              required: false,
+            }
+          - { label: Email, name: email, widget: string }
+
+          - label: Address
+            name: address
+            widget: object
+            fields:
+              - { label: Street, name: street, widget: string }
+              - { label: Suite, name: suite, widget: string, required: false }
+              - { label: City, name: city, widget: string }
+              - { label: State, name: state, widget: string }
+              - { label: ZIP, name: zip, widget: string }
+              - { label: Country, name: country, widget: string, required: false }
+
+          - label: Social links
+            name: social
+            widget: object
+            fields:
+              - { label: Facebook, name: facebook, widget: string, required: false }
+              - { label: Instagram, name: instagram, widget: string, required: false }
+
+          - label: Opening hours
+            name: hours
+            widget: list
+            summary: "{{fields.days}} — {{fields.time}}"
+            fields:
+              - { label: Days, name: days, widget: string }
+              - { label: Time, name: time, widget: string }
+
+          - label: Homepage hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Subtitle, name: subtitle, widget: string }
+              - { label: Intro paragraph, name: intro, widget: text }
+              - { label: Primary button, name: ctaPrimary, widget: string }
+              - { label: Secondary button, name: ctaSecondary, widget: string }
+
+          - label: "Homepage: experience section"
+            name: intro
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: text }
+
+          - label: "Homepage: booking section"
+            name: booking
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: Button label, name: cta, widget: string }
+
+          - label: "Homepage: products section"
+            name: products
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: string }
+              - label: Brand logos
+                name: brands
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Brand name, name: name, widget: string }
+                  - { label: Logo, name: logo, widget: image }
+
+          - label: Testimonials
+            name: testimonials
+            widget: list
+            summary: "{{fields.author}}"
+            fields:
+              - { label: Quote, name: quote, widget: text }
+              - { label: Author, name: author, widget: string }
+
+          - label: Booth rental callout
+            name: boothRental
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: string }
+
+  # ── Services & pricing ────────────────────────────────────────
+  - name: services
+    label: Services & Pricing
+    files:
+      - name: services
+        label: Price List
+        file: src/content/services.json
+        format: json
+        fields:
+          - label: Categories
+            name: categories
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {
+                  label: ID,
+                  name: id,
+                  widget: string,
+                  hint: "Lowercase, no spaces — e.g. ladies. Changing this is safe but keep it unique.",
+                }
+              - { label: Tab label, name: label, widget: string }
+              - { label: Short description, name: blurb, widget: string }
+              - { label: Photo, name: image, widget: image }
+              - label: Services
+                name: items
+                widget: list
+                summary: "{{fields.name}} — {{fields.price}}"
+                fields:
+                  - { label: Service, name: name, widget: string }
+                  - {
+                      label: Description,
+                      name: description,
+                      widget: string,
+                      required: false,
+                    }
+                  - {
+                      label: Price,
+                      name: price,
+                      widget: string,
+                      hint: "Free text, e.g. $40 or Starting at $250",
+                    }
+
+  # ── About / team ──────────────────────────────────────────────
+  - name: team
+    label: About & Team
+    files:
+      - name: team
+        label: About Page
+        file: src/content/team.json
+        format: json
+        fields:
+          - { label: Section heading, name: heading, widget: string }
+          - { label: Intro paragraph, name: intro, widget: text }
+          - label: Team members
+            name: members
+            widget: list
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string }
+              - { label: Title line, name: title, widget: string, required: false }
+              - { label: Photo, name: image, widget: image }
+              - label: Bio paragraphs
+                name: bio
+                widget: list
+                field: { label: Paragraph, name: paragraph, widget: text }
+
+          - label: Additional services
+            name: additionalServices
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Items
+                name: items
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Logo, name: logo, widget: image }
+                  - { label: Description, name: description, widget: text }
+
+  # ── Gallery ───────────────────────────────────────────────────
+  - name: gallery
+    label: Gallery
+    files:
+      - name: gallery
+        label: Gallery Page
+        file: src/content/gallery.json
+        format: json
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Intro, name: intro, widget: string }
+          - label: Images
+            name: images
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - { label: Image, name: src, widget: image }
+              - {
+                  label: Description,
+                  name: alt,
+                  widget: string,
+                  hint: "Describe the photo — used by screen readers and search engines.",
+                }
+
+  # ── Careers ───────────────────────────────────────────────────
+  - name: careers
+    label: Careers
+    files:
+      - name: careers
+        label: Careers Page
+        file: src/content/careers.json
+        format: json
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Intro, name: intro, widget: string }
+          - { label: Body, name: body, widget: text }
+          - label: Open positions
+            name: openings
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Type, name: type, widget: string }
+              - { label: Description, name: description, widget: text }
+          - label: Closing callout
+            name: cta
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: string }
+              - { label: Button label, name: label, widget: string }
+
+  # ── Blog ──────────────────────────────────────────────────────
+  - name: blog
+    label: Blog
+    files:
+      - name: blog
+        label: Blog Posts
+        file: src/content/blog.json
+        format: json
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Intro, name: intro, widget: string }
+          - label: Posts
+            name: posts
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - {
+                  label: URL slug,
+                  name: slug,
+                  widget: string,
+                  hint: "Lowercase words separated by hyphens — becomes /blog/your-slug",
+                }
+              - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+              - { label: Cover image, name: image, widget: image }
+              - { label: Excerpt, name: excerpt, widget: text }
+              - label: Body paragraphs
+                name: body
+                widget: list
+                field: { label: Paragraph, name: paragraph, widget: text }

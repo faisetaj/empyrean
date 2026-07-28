@@ -1,0 +1,35 @@
+{
+  "heading": "The Studio",
+  "intro": "Meaning “heaven-like,” we believe in using naturally produced, sustainable and earth friendly products. We believe our passion is our purpose, and virtue over vanity.",
+  "members": [
+    {
+      "name": "Kayla Dar",
+      "role": "Owner / Hair Expert",
+      "title": "Glamour Consultant · Stylist · Barber",
+      "image": "/images/empyrean-beauty-gallery-5.jpg",
+      "bio": [
+        "Kayla began Empyrean Beauty and Barber Studio with 17 years of experience, 3,300 hours and a passion for continuing education. She has studied with celebrity stylists through the educational opportunities Hattori Hanzo Shears has to offer.",
+        "With a deep love for glamour and fashion, Kayla also believes deeply in using products that are environmentally friendly. This led her to developing her business, Luxe Teeth Whitening, to further offer a GMO-free and vegan based whitening system to ensure our guests leave with a smile."
+      ]
+    },
+    {
+      "name": "Brandy Pruitt",
+      "role": "Skincare Services",
+      "title": "Additional Services",
+      "image": "/images/empyrean-beauty-gallery-6.jpg",
+      "bio": [
+        "Brandy rounds out the studio with dedicated skincare services — an added convenience for guests who want to leave feeling fully refreshed."
+      ]
+    }
+  ],
+  "additionalServices": {
+    "heading": "Additional Services",
+    "items": [
+      {
+        "name": "Luxe Teeth Whitening",
+        "logo": "/images/Luxe-Teeth-Whitening-Logo-TQ.jpg",
+        "description": "A GMO-free, vegan based whitening system so our guests leave with a smile."
+      }
+    ]
+  }
+}

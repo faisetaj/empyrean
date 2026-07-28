@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-champagne/30 text-white;
+  }
+
+  /* Respect users who've asked the OS for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* The chrome logotype reads as brushed platinum; this reproduces that
+     treatment for headings so type and mark feel like one system. */
+  .text-platinum {
+    @apply bg-platinum bg-clip-text text-transparent;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[0.68rem] font-medium uppercase tracking-luxe text-champagne;
+  }
+
+  .rule-gold {
+    @apply h-px w-full bg-gold-line;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap px-7 py-3.5
+           font-sans text-[0.72rem] font-semibold uppercase tracking-wide2
+           transition-all duration-300 focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-champagne
+           focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  }
+
+  .btn-gold {
+    @apply btn bg-champagne text-ink hover:bg-champagne-light hover:shadow-gold;
+  }
+
+  .btn-outline {
+    @apply btn border border-white/25 text-bone hover:border-champagne hover:text-champagne;
+  }
+
+  .card {
+    @apply border border-white/[0.07] bg-charcoal/60 backdrop-blur-sm;
+  }
+}

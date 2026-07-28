@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Empyrean Beauty — Site Editor</title>
+    <link rel="icon" type="image/png" href="/images/Empyrean-Beauty-EB-favicon.png" />
+  </head>
+  <body>
+    <!-- Netlify Identity: handles Kayla's login and the invite/password-reset
+         links that arrive by email. Must load before the CMS. -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+    <script>
+      // After accepting an email invite the user lands on /admin/ with a token
+      // in the URL; without this they'd be dropped on the login screen instead.
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

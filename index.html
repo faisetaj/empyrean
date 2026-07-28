@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/Empyrean-Beauty-EB-favicon.png" />
+    <title>Empyrean Beauty — Salon &amp; Barber Studio | New Caney, TX</title>
+    <meta
+      name="description"
+      content="Empyrean Beauty is a salon and barber studio in New Caney, TX. 17+ years of experience in cut, color, balayage, extensions and barbering. Book your visit today."
+    />
+    <meta name="theme-color" content="#0B0D12" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Empyrean Beauty — Salon &amp; Barber Studio" />
+    <meta
+      property="og:description"
+      content="Meaning heaven-like. A salon and barber studio in New Caney, TX built on virtue over vanity."
+    />
+    <meta property="og:image" content="/images/Empyrean-Beauty-Revised-Large.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Local-business structured data so Google can surface hours, address
+         and phone directly in search and maps results. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Empyrean Beauty",
+        "description": "Salon and Barber Studio in New Caney, TX with 17+ years of experience.",
+        "image": "https://www.empyreanbeauty.com/images/Empyrean-Beauty-Revised-Large.png",
+        "url": "https://www.empyreanbeauty.com",
+        "telephone": "+1-936-250-0956",
+        "email": "info@empyreanbeauty.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "22186 Market Place Dr, Suite #122",
+          "addressLocality": "New Caney",
+          "addressRegion": "TX",
+          "postalCode": "77357",
+          "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
+        "priceRange": "$$"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <!-- Required so Netlify Identity invite / recovery links that land on the
+         site root redirect through to the CMS at /admin/. -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

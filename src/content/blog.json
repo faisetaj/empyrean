@@ -1,0 +1,42 @@
+{
+  "heading": "Journal",
+  "intro": "Notes from the chair — care, colour and the products we stand behind.",
+  "posts": [
+    {
+      "slug": "why-we-choose-sustainable-product",
+      "title": "Why We Choose Sustainable Product",
+      "date": "2026-06-18",
+      "excerpt": "Virtue over vanity isn't a slogan for us — it's the reason our shelves look the way they do.",
+      "image": "/images/Davines-Logo.jpg",
+      "body": [
+        "When we opened Empyrean Beauty, one of the first decisions we made was what would sit on the back bar. It would have been easier and cheaper to stock whatever the distributor pushed hardest that quarter. We went the other way.",
+        "We look for lines that are naturally produced, sustainably packaged and honest about what's inside the bottle. Davines has been a mainstay for exactly that reason — the performance holds up under a professional's hands, and the company's environmental commitments are more than marketing copy.",
+        "The practical upside for you: colour that stays truer between visits, and hair that doesn't feel stripped when you leave. The philosophical upside is simpler. Our passion is our purpose, and we'd rather stand behind less product than stand behind the wrong one."
+      ]
+    },
+    {
+      "slug": "making-your-balayage-last",
+      "title": "Making Your Balayage Last",
+      "date": "2026-05-02",
+      "excerpt": "Hand-painted colour is an investment. Here's how to protect it between appointments.",
+      "image": "/images/empyrean-beauty-gallery-4.jpg",
+      "body": [
+        "Balayage is designed to grow out gracefully, which is exactly why it's worth protecting. A well-placed hand-painted colour should look intentional at week two and at month four.",
+        "Wash less than you think you need to, and when you do, use cool water and a colour-safe shampoo. Heat is the fastest way to pull warmth and brass into a cool blonde. If you're using an iron daily, use a heat protectant every single time — no exceptions.",
+        "Book a gloss between full appointments. It's a fraction of the cost of a full service and it resets tone beautifully. Most of our balayage guests come in for a gloss at the halfway mark and stretch their full appointment out considerably."
+      ]
+    },
+    {
+      "slug": "what-to-expect-at-your-first-visit",
+      "title": "What to Expect at Your First Visit",
+      "date": "2026-03-21",
+      "excerpt": "A short guide to your first appointment at the studio, from consultation to finish.",
+      "image": "/images/empyrean-beauty-gallery-6.jpg",
+      "body": [
+        "Every first appointment starts with a consultation, and we mean a real one. Bring photos — of what you want and, just as usefully, what you don't. We'll talk honestly about what your hair can do today versus what it might take a few sessions to reach.",
+        "Plan for a little more time than the service alone suggests. Colour corrections and first-time balayage in particular are not appointments to squeeze into a lunch break.",
+        "We do take walk-ins, but booking ahead through our online calendar is always the safer bet. It also means we can set aside the right amount of time for the service you actually want."
+      ]
+    }
+  ]
+}

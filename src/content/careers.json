@@ -1,0 +1,22 @@
+{
+  "heading": "Careers",
+  "intro": "Booth rentals available — contact for more info!",
+  "body": "Empyrean Beauty is always interested in talking with stylists and barbers who take their craft seriously. We keep a small, senior room: sustainable product, professional tools, and guests who book ahead. If you hold a current Texas license and want a chair in a studio that lets you build your own book, we'd like to meet you.",
+  "openings": [
+    {
+      "title": "Booth Rental — Stylist",
+      "type": "Independent contractor",
+      "description": "A full station in the salon side of the studio. Set your own hours and pricing, keep your own clientele, and work alongside a team that shares your standards."
+    },
+    {
+      "title": "Booth Rental — Barber",
+      "type": "Independent contractor",
+      "description": "A dedicated barber chair for cuts, beard work and shaves. Ideal for a licensed barber with an established following looking for a professional home."
+    }
+  ],
+  "cta": {
+    "heading": "Interested?",
+    "body": "Send us a note and Kayla will get back to you personally.",
+    "label": "Contact Us"
+  }
+}
