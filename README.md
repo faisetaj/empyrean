@@ -84,6 +84,18 @@ Homepage → Booking link**, and every button across the site follows it.
 > `site.json` currently ships a placeholder (`https://glossgenius.com/`).
 > Replace it with the real booking URL before launch.
 
+## Copy changes without opening an editor
+
+Label an issue `content-request` (or file one with the *Content change request*
+template) and a GitHub Action turns it into a reviewed PR with a Netlify deploy
+preview. Built for forwarding client texts in five seconds from a phone.
+
+See [docs/CONTENT-REQUESTS.md](docs/CONTENT-REQUESTS.md) — including how to
+reuse it on other repos, and the content-layer prerequisite that makes it safe.
+
+Needs the [Claude GitHub App](https://github.com/apps/claude) installed and an
+`ANTHROPIC_API_KEY` repository secret.
+
 ## Launch checklist
 
 Nothing is published yet. In rough order:

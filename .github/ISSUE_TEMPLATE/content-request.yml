@@ -1,0 +1,55 @@
+name: Content change request
+description: A copy change on the live site — text, prices, hours, contact details.
+title: "Content: "
+labels: ["content-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For **copy changes only** — text, prices, hours, contact details.
+
+        For layout, design, new sections, or anything involving images, open a
+        normal issue instead. This form drives an automation that is only
+        allowed to edit text.
+
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      description: A URL or a page name is fine.
+      placeholder: /pricing  (or "the pricing page")
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What does it say now?
+      description: >
+        Paste the exact wording if you have it. Exact text is matched with
+        confidence; a paraphrase may come back as a question instead.
+      placeholder: Women's Signature Haircut — $75
+    validations:
+      required: true
+
+  - type: textarea
+    id: replacement
+    attributes:
+      label: What should it say instead?
+      placeholder: Women's Signature Haircut — $85
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Who asked?
+      description: Optional — useful when chasing this up later.
+      placeholder: Kayla, text message 28 Jul
+
+  - type: checkboxes
+    id: everywhere
+    attributes:
+      label: Scope
+      options:
+        - label: Change this everywhere it appears, not just on the page above

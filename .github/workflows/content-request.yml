@@ -1,0 +1,112 @@
+name: Content request
+
+# Turns a "change X to Y" issue into a reviewed pull request.
+#
+# Fires when an issue carries the `content-request` label — which the issue
+# form applies automatically, so filing via the template is enough. Labelling
+# an existing issue by hand works too, which is the fast path for forwarding a
+# client's text message.
+#
+# The agent may only touch src/content/*.json. It opens a PR; it never pushes
+# to main. Netlify comments the deploy preview on the PR, so review is a
+# glance at the rendered page rather than a diff.
+
+on:
+  issues:
+    types: [opened, labeled]
+
+# One run per issue. Re-labelling, or a label applied moments after creation,
+# cancels the stale run instead of racing it and opening two PRs.
+concurrency:
+  group: content-request-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  apply:
+    # `contains` on the full label set covers both trigger events: `opened`
+    # (labels applied by the template) and `labeled` (applied by hand).
+    if: contains(github.event.issue.labels.*.name, 'content-request')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write # commit the change to a branch
+      pull-requests: write # open the PR
+      issues: write # comment back when the request needs a human
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # matches netlify.toml
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply the requested change
+        uses: anthropics/claude-code-action@v1
+        env:
+          # The issue text is untrusted input, so it is passed through the
+          # environment rather than interpolated into the workflow. See
+          # docs/CONTENT-REQUESTS.md for the residual prompt-injection risk
+          # and why the PR gate is the mitigation.
+          REQUEST_TITLE: ${{ github.event.issue.title }}
+          REQUEST_BODY: ${{ github.event.issue.body }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: |
+            --max-turns 15
+            --model claude-sonnet-5
+          prompt: |
+            You are applying a copy change to a live client website.
+
+            The request is issue #${{ github.event.issue.number }}. Read it
+            first — the title and body are in the environment variables
+            REQUEST_TITLE and REQUEST_BODY:
+
+                printf '%s\n\n%s\n' "$REQUEST_TITLE" "$REQUEST_BODY"
+
+            ## Where the copy lives
+
+            Every editable string on this site is in `src/content/*.json`
+            (site, services, team, gallery, blog). Pages import those files;
+            no copy is hardcoded in components.
+
+            ## Rules
+
+            1. **Only edit files under `src/content/`.** Never touch .jsx,
+               .css, .html, config, or anything in .github. If satisfying the
+               request would require editing those, stop and comment instead.
+            2. **Make the smallest edit that satisfies the request.** Do not
+               reformat the file, reorder keys, fix unrelated typos, or
+               "improve" neighbouring copy. A reviewer should see one change.
+            3. **Match the requested text exactly.** If you cannot find it,
+               do not guess at what was meant — stop and comment.
+            4. **Check for duplicates.** If the old text appears in more than
+               one place, change them all only if the issue says to change it
+               everywhere. Otherwise change the one on the named page and say
+               in the PR body where else it occurs.
+            5. **Stop and comment, do not guess**, if the request is
+               ambiguous, is not a copy change (layout, design, images, new
+               sections, features), or would change meaning rather than
+               wording. Explain what you need and open no PR. A question is a
+               better outcome than a wrong edit on a live site.
+            6. **Keep the JSON valid**, then prove the site still builds:
+
+                   npm run build
+
+               If the build fails, fix your own change or abandon it. Never
+               open a PR on a red build.
+
+            ## Delivering it
+
+            Commit to a new branch named `content/issue-${{ github.event.issue.number }}`
+            and open a pull request that closes the issue. In the PR body,
+            quote the before and after text so it can be reviewed without
+            opening the diff, and name the file you changed.
+
+            Title the PR: `Content: <short description of the change>`
