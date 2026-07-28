@@ -3,40 +3,116 @@
     {
       "id": "ladies",
       "label": "Ladies",
-      "blurb": "Salon services — cut, color, and finish.",
+      "blurb": "Cuts, colour, treatments and extensions.",
       "image": "/images/Empyrean-Beauty-Women-Right-1.jpg",
-      "items": [
-        { "name": "Cut", "description": "Consultation, shampoo, cut and style", "price": "Starting at $55" },
-        { "name": "Full Color", "description": "Single process, roots through ends", "price": "Starting at $85" },
-        { "name": "Balayage", "description": "Hand-painted, lived-in dimension", "price": "Starting at $250" },
-        { "name": "Full Highlights", "description": "Full head foil placement", "price": "Starting at $275" },
-        { "name": "Half Head Highlight", "description": "Top and sides foil placement", "price": "Starting at $175" },
-        { "name": "Partial Highlight", "description": "Face-framing and part-line foils", "price": "Starting at $150" },
-        { "name": "Lowlights", "description": "Depth and contrast woven through", "price": "Starting at $150" },
-        { "name": "Root Retouch", "description": "New growth, colour matched", "price": "Starting at $60" },
-        { "name": "Shampoo Style", "description": "Wash and professional finish", "price": "Starting at $35" },
-        { "name": "Up Style", "description": "Event, bridal and formal styling", "price": "Starting at $65" },
-        { "name": "Hair Extensions", "description": "Consultation required", "price": "Starting at $500" },
-        { "name": "Brazilian Blowout", "description": "Smoothing and frizz control", "price": "Starting at $200" },
-        { "name": "Makeup Application", "description": "Full face, event ready", "price": "Starting at $65" },
-        { "name": "Eyebrow Waxing", "description": "Shaped and cleaned", "price": "Starting at $15" },
-        { "name": "Eyelash Tinting", "description": "Semi-permanent lash tint", "price": "Starting at $12" },
-        { "name": "Lip Wax", "description": "Quick and gentle", "price": "Starting at $12" }
+      "groups": [
+        {
+          "name": "Haircuts & Styling",
+          "items": [
+            {
+              "name": "Women's Signature Haircut",
+              "description": "Includes shampoo & style",
+              "price": "$75"
+            },
+            { "name": "Shampoo & Blowout", "description": "", "price": "$60" }
+          ]
+        },
+        {
+          "name": "Color Services",
+          "items": [
+            { "name": "Root Retouch", "description": "", "price": "Starting at $110" },
+            { "name": "Single Process Color", "description": "", "price": "Starting at $140" },
+            { "name": "Partial Highlights", "description": "", "price": "Starting at $180" },
+            { "name": "Full Highlights", "description": "", "price": "Starting at $250" },
+            { "name": "Balayage", "description": "", "price": "Starting at $300" },
+            { "name": "Toner / Gloss Refresh", "description": "", "price": "$60" },
+            {
+              "name": "Color Correction",
+              "description": "Consultation required",
+              "price": "Starting at $125/hour"
+            }
+          ]
+        },
+        {
+          "name": "Luxury Treatments",
+          "items": [
+            { "name": "Deep Conditioning Treatment", "description": "", "price": "$35" },
+            { "name": "Bond Repair Treatment", "description": "", "price": "$50" },
+            { "name": "Scalp Detox Treatment", "description": "", "price": "$45" },
+            {
+              "name": "Keratin Smoothing Treatment",
+              "description": "",
+              "price": "Starting at $250"
+            }
+          ]
+        },
+        {
+          "name": "Hair Extensions",
+          "note": "Installation pricing does not include the hair itself.",
+          "items": [
+            {
+              "name": "Extension Consultation",
+              "description": "Credited toward installation",
+              "price": "$50"
+            },
+            {
+              "name": "Hand-Tied Wefts",
+              "description": "Installation — hair not included",
+              "price": "Starting at $200"
+            },
+            {
+              "name": "Sew-In Wefts",
+              "description": "Installation — hair not included",
+              "price": "Starting at $200"
+            },
+            {
+              "name": "I-Tip / K-Tip Extensions",
+              "description": "Installation — hair not included",
+              "price": "Starting at $700"
+            },
+            { "name": "Weft Move-Up", "description": "Maintenance", "price": "Starting at $200" },
+            { "name": "Extension Removal", "description": "Maintenance", "price": "Starting at $100" },
+            {
+              "name": "Premium Extension Hair",
+              "description": "Varies by length, density and color",
+              "price": "Quoted at consultation"
+            }
+          ]
+        },
+        {
+          "name": "Add-On Services",
+          "items": [
+            { "name": "Bang Trim", "description": "", "price": "$15" },
+            { "name": "Brow Wax", "description": "", "price": "$25" },
+            { "name": "Toner with Color Service", "description": "", "price": "$40" },
+            { "name": "Extra Color Bowl", "description": "", "price": "$25" }
+          ]
+        }
       ]
     },
     {
       "id": "gentlemen",
       "label": "Gentlemen",
-      "blurb": "Barber studio — cuts, beards, and shaves.",
+      "blurb": "Cuts and trims.",
       "image": "/images/Empyrean-Beauty-Men-Left.jpg",
-      "items": [
-        { "name": "Hair Cut", "description": "Classic hair cut", "price": "$40" },
-        { "name": "Hair Color", "description": "Grey blending", "price": "$35" },
-        { "name": "Beard Trim", "description": "Clipper trim", "price": "$15 with cut / $25 individual" },
-        { "name": "Neck Trim", "description": "Clean back of neck & neck line", "price": "$15" },
-        { "name": "Head Shave", "description": "Clean shave head", "price": "$60" },
-        { "name": "Waxing", "description": "General waxing", "price": "$12" }
+      "groups": [
+        {
+          "name": "Cuts & Trims",
+          "items": [
+            { "name": "Men's Cut", "description": "", "price": "$50" },
+            { "name": "Beard Trim", "description": "", "price": "$20" }
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "heading": "Salon Policies",
+    "items": [
+      "A 50% non-refundable booking fee is required to reserve all appointments.",
+      "Cancellations require 48 hours' notice.",
+      "Same-day cancellations and no-shows are charged 100% of the reserved service.",
+      "Prices may increase for extra length, density, or time required."
+    ]
+  }
 }

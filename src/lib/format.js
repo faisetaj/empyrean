@@ -5,6 +5,14 @@
  * midnight, so formatting in a negative-offset timezone like Texas would
  * otherwise roll the displayed date back by a day.
  */
+/**
+ * Flattens a service category's groups into a single ordered item list —
+ * used for the short homepage previews, which don't show group headings.
+ */
+export function flattenServices(category) {
+  return (category?.groups ?? []).flatMap((group) => group.items ?? []);
+}
+
 export function formatDate(iso) {
   const date = new Date(`${iso}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return iso;

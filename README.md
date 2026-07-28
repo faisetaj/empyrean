@@ -1,10 +1,12 @@
-# Empyrean Beauty — Salon & Barber Studio
+# Empyrean Beauty Parlor
 
-Marketing site for Empyrean Beauty in New Caney, TX. React + Vite + Tailwind,
-with a git-backed CMS so Kayla can edit the site without touching code.
+Marketing site for Empyrean Beauty Parlor in New Caney, TX. React + Vite +
+Tailwind, with a git-backed CMS so Kayla can edit the site without touching
+code.
 
-Rebuilt from the original 2022 WordPress site (recovered via the Wayback
-Machine) — same pages, copy and imagery, modernised.
+Rebuilt from the original 2022 site (recovered via the Wayback Machine) — same
+pages and copy, modernised, and updated to a beauty parlor: no barbering, no
+beard or shave services.
 
 ## Running locally
 
@@ -20,43 +22,54 @@ npm run preview  # serve the production build
 Every piece of editable text and imagery is JSON under `src/content/`. Pages
 import these directly — there is no database and no API call at runtime.
 
-| File            | Drives                                     |
-| --------------- | ------------------------------------------ |
+| File            | Drives                                         |
+| --------------- | ---------------------------------------------- |
 | `site.json`     | Contact details, hours, homepage, booking link |
-| `services.json` | The full price list (Ladies / Gentlemen)   |
-| `team.json`     | About page, staff bios, extra services     |
-| `gallery.json`  | Gallery images and captions                |
-| `careers.json`  | Careers page and open positions            |
-| `blog.json`     | Blog posts                                 |
+| `services.json` | The full price list (Ladies / Gentlemen)       |
+| `team.json`     | About page, staff bios, extra services         |
+| `gallery.json`  | Gallery images and captions                    |
+| `careers.json`  | Careers page and open positions                |
+| `blog.json`     | Blog posts                                     |
 
 Images live in `public/images/` and are referenced as `/images/filename.jpg`.
 
-## The CMS
+## The CMS — how Kayla logs in
 
-Decap CMS is served at `/admin`. Kayla logs in with email + password, edits
-through a visual form, and saving commits the change to this repo — which
-triggers a Netlify rebuild. No deploy step for her to think about.
+Decap CMS is served at **`/admin`** (e.g. `empyreanbeauty.com/admin`). It is
+*not* live until the Netlify steps below are done — the page will load but
+login will fail without Identity and Git Gateway enabled.
+
+There is no separate username/password database and nothing to install. Kayla
+is invited by email, sets her own password, and from then on logs in at
+`/admin`. Saving commits the change to this repo, which triggers a Netlify
+rebuild — no deploy step for her to think about.
 
 ### One-time setup on Netlify
 
 1. **Create the site** — connect this repo. Build command `npm run build`,
    publish directory `dist`. (`netlify.toml` already declares both.)
-2. **Enable Identity** — Site configuration → Identity → Enable.
-3. **Set registration to Invite only** — otherwise anyone could sign up and
-   edit the site.
+2. **Enable Identity** — Site configuration → Identity → Enable Identity.
+3. **Set registration to Invite only** — Identity → Registration preferences.
+   Without this anyone could sign up and edit the site.
 4. **Enable Git Gateway** — Identity → Services → Git Gateway → Enable. This
    is what lets the CMS commit on Kayla's behalf without giving her a GitHub
    account.
-5. **Invite Kayla** — Identity → Invite users. She gets an email, sets a
-   password, and lands in the editor.
+5. **Invite Kayla** — Identity → Invite users → her email address.
+
+She gets an email, clicks the link, sets a password, and lands in the editor.
+To add more editors later, repeat step 5. To reset a password, she uses the
+"Forgot password" link on `/admin`.
+
+> If invite emails land in spam, Netlify's Identity settings let you point at
+> your own SMTP provider.
 
 ### Pointing the GoDaddy domain at it
 
 Domain is registered with GoDaddy (customer #701300221). In Netlify: Domain
-management → Add a domain → `empyreanbeauty.com`. Netlify will show the DNS
-records to create in GoDaddy — either the four `A` records for the apex plus a
-`CNAME` for `www`, or switch the nameservers to Netlify's for simpler
-management. HTTPS is issued automatically once DNS resolves.
+management → Add a domain. Netlify will show the DNS records to create in
+GoDaddy — either the four `A` records for the apex plus a `CNAME` for `www`,
+or switch the nameservers to Netlify's for simpler management. HTTPS is issued
+automatically once DNS resolves.
 
 ## Booking / GlossGenius
 
@@ -75,18 +88,32 @@ Homepage → Booking link**, and every button across the site follows it.
 ## Still to confirm before launch
 
 - Real GlossGenius booking URL
+- **Canonical domain.** The email is now `@empyreanbeautyparlor.com`, but the
+  site's canonical URL, sitemap and structured data still say
+  `empyreanbeauty.com`. If the site is moving to `empyreanbeautyparlor.com`,
+  update `index.html`, `public/robots.txt` and `public/admin/config.yml`.
 - Opening hours (currently a sensible default, not confirmed)
 - Facebook / Instagram handles
-- Whether `info@empyreanbeauty.com` is still a live mailbox
 - Contact form currently opens the visitor's mail client; swap for Netlify
   Forms or Formspree if a real inbox flow is wanted
-- Fresh photography — the recovered archive images are placeholders and several
-  are stock backdrops rather than the actual studio
+- Fresh photography — the recovered archive images are placeholders and a few
+  are stock rather than the actual parlor
 
 ## Design notes
 
-Palette and type descend from the original site: charcoal `#161922`, smoke
-`#8E8E8E`, bone `#F7F7F7`. The chrome logotype is echoed by a platinum gradient
-on display text, warmed with a champagne accent (`#C5A059`) so the page isn't
-cold grey-on-grey. Type is Cormorant Garamond over Inter — a modern take on the
-original's Noto Serif and Lato pairing.
+Light theme, matching the original site and the logo itself: white and `#F7F7F7`
+grounds, `#14171E` near-black type, silver-grey accents (`#C4C7CD` rules,
+`#5C6270` body copy). No gold anywhere — the brand reads black, white and
+chrome. Primary buttons are solid charcoal on white.
+
+Type is Cormorant Garamond over Inter — a modern take on the original's Noto
+Serif and Lato pairing.
+
+Body copy uses `#5C6270` rather than the original `#8E8E8E`, which only reaches
+about 3.5:1 on white and fails WCAG AA for text. `smoke` is kept in the palette
+for decorative use only.
+
+The original logo artwork has "SALON AND BARBER STUDIO" baked into the image,
+so it can't be used now. `src/components/Logo.jsx` pairs the clean EB monogram
+with a typeset wordmark instead — which also scales and recolours better than
+a raster logo.

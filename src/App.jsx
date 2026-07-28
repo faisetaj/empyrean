@@ -20,7 +20,10 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col">
+    // overflow-x-clip contains the sideways Reveal entrances, which briefly sit
+    // outside the viewport. `clip` rather than `hidden` — hidden would create a
+    // scroll container and break the sticky column on the Pricing page.
+    <div className="flex min-h-screen flex-col overflow-x-clip">
       <ScrollToTop />
       <Nav />
       <main className="flex-1">

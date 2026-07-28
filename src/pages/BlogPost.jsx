@@ -16,21 +16,17 @@ export default function BlogPost() {
 
   return (
     <>
-      <section className="relative flex min-h-[52vh] items-end overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <img
-            src={post.image}
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/55" />
+      <section className="relative overflow-hidden border-b border-pearl bg-mist pt-[4.5rem] sm:pt-20">
+        <div className="absolute inset-0" aria-hidden="true">
+          <img src={post.image} alt="" className="h-full w-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
         </div>
 
-        <div className="relative mx-auto w-full max-w-3xl px-6 pb-16 sm:px-8">
+        <div className="relative mx-auto w-full max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
           <Link
             to="/blog"
-            className="group mb-7 inline-flex items-center gap-2.5 font-sans text-[0.7rem] font-semibold uppercase tracking-wide2 text-smoke transition-colors hover:text-champagne"
+            className="group mb-6 inline-flex items-center gap-2.5 font-sans text-[0.68rem] font-semibold uppercase tracking-wide2 text-slate transition-colors hover:text-ink"
           >
             <ArrowLeft
               size={14}
@@ -41,12 +37,12 @@ export default function BlogPost() {
 
           <time
             dateTime={post.date}
-            className="block font-sans text-[0.66rem] uppercase tracking-luxe text-champagne"
+            className="block font-sans text-[0.64rem] uppercase tracking-luxe text-slate"
           >
             {formatDate(post.date)}
           </time>
 
-          <h1 className="mt-5 font-display text-4xl font-light leading-[1.08] tracking-tight text-bone md:text-6xl">
+          <h1 className="mt-4 font-display text-[2.4rem] font-light leading-[1.08] tracking-tight text-ink sm:text-5xl md:text-6xl">
             {post.title}
           </h1>
         </div>
@@ -55,30 +51,32 @@ export default function BlogPost() {
       <Section>
         <article className="mx-auto max-w-2xl">
           <Reveal>
-            <p className="font-display text-xl font-light italic leading-relaxed text-bone/90 md:text-2xl">
+            <p className="font-display text-xl font-light italic leading-relaxed text-ink sm:text-2xl">
               {post.excerpt}
             </p>
-            <div className="my-10 h-px w-20 bg-champagne/70" />
+            <div className="my-8 h-px w-16 bg-ink/30 sm:w-20" />
           </Reveal>
 
-          <div className="space-y-7">
+          <div className="space-y-6">
             {post.body.map((para, i) => (
               <Reveal key={i} delay={Math.min(i * 70, 300)}>
-                <p className="text-[1.02rem] leading-[1.85] text-smoke">{para}</p>
+                <p className="text-[1rem] leading-[1.85] text-slate sm:text-[1.02rem]">
+                  {para}
+                </p>
               </Reveal>
             ))}
           </div>
 
           <Reveal>
-            <div className="mt-14 border-t border-white/[0.08] pt-10 text-center">
-              <p className="font-display text-2xl font-light italic text-bone">
+            <div className="mt-12 border-t border-pearl pt-9 text-center">
+              <p className="font-display text-2xl font-light italic text-ink">
                 Ready for your appointment?
               </p>
               <a
                 href={site.bookingUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="btn-gold mt-7"
+                className="btn-dark mt-6"
               >
                 Book Now
                 <ArrowRight size={15} />
@@ -89,10 +87,10 @@ export default function BlogPost() {
       </Section>
 
       {others.length > 0 && (
-        <Section className="border-t border-white/[0.06] bg-charcoal">
-          <p className="eyebrow mb-9 text-center">Keep Reading</p>
+        <Section className="border-t border-pearl bg-mist">
+          <p className="eyebrow mb-8 text-center">Keep Reading</p>
 
-          <div className="grid gap-8 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
             {others.map((other, i) => (
               <Reveal key={other.slug} delay={i * 110}>
                 <Link to={`/blog/${other.slug}`} className="group block">
@@ -105,10 +103,10 @@ export default function BlogPost() {
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="mt-6 font-display text-2xl font-light text-bone transition-colors group-hover:text-champagne">
+                  <h3 className="mt-5 font-display text-2xl font-light text-ink">
                     {other.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-smoke">
+                  <p className="mt-2 text-sm leading-relaxed text-slate">
                     {other.excerpt}
                   </p>
                 </Link>

@@ -6,9 +6,9 @@ import { Section } from '../components/Section.jsx';
 import site from '../content/site.json';
 
 const FIELD =
-  'w-full border border-white/[0.12] bg-charcoal/60 px-4 py-3.5 text-sm text-bone ' +
-  'placeholder:text-smoke/60 transition-colors focus:border-champagne focus:outline-none ' +
-  'focus:ring-1 focus:ring-champagne';
+  'w-full border border-silver bg-white px-4 py-3.5 text-base text-ink ' +
+  'placeholder:text-smoke transition-colors focus:border-ink focus:outline-none ' +
+  'focus:ring-1 focus:ring-ink sm:text-sm';
 
 export default function Contact() {
   const { address } = site;
@@ -34,58 +34,59 @@ export default function Contact() {
   return (
     <>
       <PageHero
+        motif="strands"
         eyebrow="Get in Touch"
         title="Contact Us"
         body="Question or comment? Fill out the form below and we'll do our best to respond within a business day."
-        image="/images/EB-BCKG-4-scaled.jpg"
+        image="/images/empyrean-beauty-gallery-5.jpg"
       />
 
       <Section>
-        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* ── Form ───────────────────────────────────────── */}
           <Reveal>
-            <p className="eyebrow mb-5">Send a Message</p>
-            <h2 className="font-display text-4xl font-light leading-[1.1] text-bone">
+            <p className="eyebrow mb-4">Send a Message</p>
+            <h2 className="font-display text-[2.15rem] font-light leading-[1.1] text-ink sm:text-4xl">
               Question or comment?
             </h2>
-            <div className="mt-6 h-px w-20 bg-champagne/70" />
+            <div className="mt-5 h-px w-16 bg-ink/30 sm:w-20" />
 
-            <form onSubmit={handleSubmit} className="mt-9 space-y-5">
+            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <div>
-                <label htmlFor="name" className="eyebrow mb-2.5 block">
+                <label htmlFor="name" className="eyebrow mb-2 block">
                   Your name
                 </label>
-                <input id="name" name="name" type="text" required className={FIELD} />
+                <input id="name" name="name" type="text" autoComplete="name" required className={FIELD} />
               </div>
 
               <div>
-                <label htmlFor="email" className="eyebrow mb-2.5 block">
+                <label htmlFor="email" className="eyebrow mb-2 block">
                   Your email
                 </label>
-                <input id="email" name="email" type="email" required className={FIELD} />
+                <input id="email" name="email" type="email" autoComplete="email" required className={FIELD} />
               </div>
 
               <div>
-                <label htmlFor="subject" className="eyebrow mb-2.5 block">
+                <label htmlFor="subject" className="eyebrow mb-2 block">
                   Subject
                 </label>
                 <input id="subject" name="subject" type="text" className={FIELD} />
               </div>
 
               <div>
-                <label htmlFor="message" className="eyebrow mb-2.5 block">
+                <label htmlFor="message" className="eyebrow mb-2 block">
                   Your message
                 </label>
                 <textarea id="message" name="message" rows={6} className={`${FIELD} resize-y`} />
               </div>
 
-              <button type="submit" className="btn-gold w-full sm:w-auto">
+              <button type="submit" className="btn-dark w-full sm:w-auto">
                 Send Message
                 <ArrowRight size={15} />
               </button>
 
               {sent && (
-                <p role="status" className="text-sm text-champagne">
+                <p role="status" className="text-sm text-slate">
                   Your mail client should have opened. If it didn't, email us
                   directly at {site.email}.
                 </p>
@@ -95,23 +96,23 @@ export default function Contact() {
 
           {/* ── Details ────────────────────────────────────── */}
           <Reveal delay={120}>
-            <p className="eyebrow mb-5">The Studio</p>
-            <h2 className="font-display text-4xl font-light leading-[1.1] text-bone">
+            <p className="eyebrow mb-4">The Parlor</p>
+            <h2 className="font-display text-[2.15rem] font-light leading-[1.1] text-ink sm:text-4xl">
               Visit us
             </h2>
-            <div className="mt-6 h-px w-20 bg-champagne/70" />
+            <div className="mt-5 h-px w-16 bg-ink/30 sm:w-20" />
 
-            <address className="mt-9 space-y-6 not-italic">
+            <address className="mt-8 space-y-5 not-italic">
               <a
                 href={`https://maps.google.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="group flex items-start gap-4"
               >
-                <span className="shrink-0 border border-champagne/40 p-2.5">
-                  <MapPin size={16} className="text-champagne" />
+                <span className="shrink-0 border border-silver p-2.5">
+                  <MapPin size={16} className="text-ink" />
                 </span>
-                <span className="text-[0.98rem] leading-relaxed text-bone/85 transition-colors group-hover:text-champagne">
+                <span className="text-[0.95rem] leading-relaxed text-slate transition-colors group-hover:text-ink sm:text-base">
                   {address.street}, {address.suite}
                   <br />
                   {address.city}, {address.state} {address.zip}
@@ -122,46 +123,46 @@ export default function Contact() {
                 href={`tel:${site.phone.replace(/[^0-9+]/g, '')}`}
                 className="group flex items-center gap-4"
               >
-                <span className="shrink-0 border border-champagne/40 p-2.5">
-                  <Phone size={16} className="text-champagne" />
+                <span className="shrink-0 border border-silver p-2.5">
+                  <Phone size={16} className="text-ink" />
                 </span>
-                <span className="text-[0.98rem] text-bone/85 transition-colors group-hover:text-champagne">
+                <span className="text-[0.95rem] text-slate transition-colors group-hover:text-ink sm:text-base">
                   {site.phone}
                 </span>
               </a>
 
               <a href={`mailto:${site.email}`} className="group flex items-center gap-4">
-                <span className="shrink-0 border border-champagne/40 p-2.5">
-                  <Mail size={16} className="text-champagne" />
+                <span className="shrink-0 border border-silver p-2.5">
+                  <Mail size={16} className="text-ink" />
                 </span>
-                <span className="text-[0.98rem] text-bone/85 transition-colors group-hover:text-champagne">
+                <span className="break-all text-[0.95rem] text-slate transition-colors group-hover:text-ink sm:text-base">
                   {site.email}
                 </span>
               </a>
             </address>
 
-            <div className="mt-10">
-              <h3 className="eyebrow mb-4">Hours</h3>
-              <ul className="space-y-2.5 text-sm text-smoke">
+            <div className="mt-9">
+              <h3 className="eyebrow mb-3.5">Hours</h3>
+              <ul className="space-y-2 text-sm text-slate">
                 {site.hours.map((row) => (
                   <li
                     key={row.days}
-                    className="flex justify-between gap-4 border-b border-white/[0.06] pb-2.5"
+                    className="flex justify-between gap-4 border-b border-pearl pb-2"
                   >
                     <span>{row.days}</span>
-                    <span className="text-bone/80">{row.time}</span>
+                    <span className="text-ink">{row.time}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="mt-10 flex items-center gap-3">
+            <div className="mt-9 flex items-center gap-3">
               <a
                 href={site.social.instagram}
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Empyrean Beauty on Instagram"
-                className="border border-white/15 p-2.5 text-smoke transition-colors hover:border-champagne hover:text-champagne"
+                className="border border-silver p-2.5 text-slate transition-colors hover:border-ink hover:text-ink"
               >
                 <Instagram size={17} />
               </a>
@@ -170,7 +171,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Empyrean Beauty on Facebook"
-                className="border border-white/15 p-2.5 text-smoke transition-colors hover:border-champagne hover:text-champagne"
+                className="border border-silver p-2.5 text-slate transition-colors hover:border-ink hover:text-ink"
               >
                 <Facebook size={17} />
               </a>
@@ -180,7 +181,7 @@ export default function Contact() {
               href={site.bookingUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="btn-gold mt-10 w-full sm:w-auto"
+              className="btn-dark mt-9 w-full sm:w-auto"
             >
               Book Now
               <ArrowRight size={15} />
@@ -190,11 +191,11 @@ export default function Contact() {
       </Section>
 
       {/* ── Map ──────────────────────────────────────────────── */}
-      <section className="border-t border-white/[0.06]">
+      <section className="border-t border-pearl">
         <iframe
           title="Map to Empyrean Beauty"
           src={`https://maps.google.com/maps?q=${mapQuery}&output=embed`}
-          className="h-[26rem] w-full grayscale-[0.65] contrast-[1.1]"
+          className="h-[20rem] w-full grayscale-[0.4] sm:h-[26rem]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           allowFullScreen

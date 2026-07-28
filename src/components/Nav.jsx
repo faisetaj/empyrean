@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo.jsx';
 import site from '../content/site.json';
 
 const LINKS = [
@@ -44,32 +45,24 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled || open
-          ? 'border-b border-white/[0.07] bg-ink/90 backdrop-blur-xl'
-          : 'border-b border-transparent bg-gradient-to-b from-ink/70 to-transparent'
+      className={`fixed inset-x-0 top-0 z-50 bg-white transition-shadow duration-500 ${
+        scrolled || open ? 'border-b border-pearl shadow-sm' : 'border-b border-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 sm:px-8">
-        <Link to="/" className="flex shrink-0 items-center" aria-label="Empyrean Beauty — home">
-          <img
-            src="/images/Empyrean-Beauty-Revised-Large.png"
-            alt="Empyrean Beauty, Salon and Barber Studio"
-            className="h-9 w-auto md:h-11"
-            width="2560"
-            height="692"
-          />
+      <nav className="mx-auto flex h-[4.5rem] w-full max-w-7xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
+        <Link to="/" aria-label="Empyrean Beauty — home" className="shrink-0">
+          <Logo />
         </Link>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-7 lg:flex xl:gap-9">
           {LINKS.map((link) => (
             <li key={link.to}>
               <NavLink
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
-                  `relative font-sans text-[0.7rem] font-medium uppercase tracking-wide2 transition-colors duration-300 ${
-                    isActive ? 'text-champagne' : 'text-bone/70 hover:text-bone'
+                  `font-sans text-[0.7rem] font-medium uppercase tracking-wide2 transition-colors duration-300 ${
+                    isActive ? 'text-ink' : 'text-slate hover:text-ink'
                   }`
                 }
               >
@@ -79,12 +72,12 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2">
           <a
             href={site.bookingUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="btn-gold hidden !px-6 !py-3 sm:inline-flex"
+            className="btn-dark hidden !px-5 !py-3 sm:inline-flex"
           >
             Book Now
           </a>
@@ -94,7 +87,7 @@ export default function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            className="p-2 text-bone transition-colors hover:text-champagne lg:hidden"
+            className="-mr-2 p-2 text-ink transition-colors hover:text-slate lg:hidden"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -103,19 +96,19 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       <div
-        className={`overflow-hidden border-t border-white/[0.07] bg-ink/95 backdrop-blur-xl transition-[max-height] duration-500 ease-out lg:hidden ${
-          open ? 'max-h-[32rem]' : 'max-h-0'
+        className={`overflow-hidden border-t border-pearl bg-white transition-[max-height] duration-500 ease-out lg:hidden ${
+          open ? 'max-h-[34rem]' : 'max-h-0'
         }`}
       >
-        <ul className="px-6 py-4">
+        <ul className="px-5 py-2 sm:px-8">
           {LINKS.map((link) => (
-            <li key={link.to} className="border-b border-white/[0.06] last:border-0">
+            <li key={link.to} className="border-b border-pearl last:border-0">
               <NavLink
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
-                  `block py-4 font-display text-2xl font-light transition-colors ${
-                    isActive ? 'text-champagne' : 'text-bone hover:text-champagne'
+                  `block py-3.5 font-display text-2xl font-light transition-colors ${
+                    isActive ? 'text-ink' : 'text-slate hover:text-ink'
                   }`
                 }
               >
@@ -124,12 +117,12 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <div className="px-6 pb-6 sm:hidden">
+        <div className="px-5 pb-5 sm:hidden">
           <a
             href={site.bookingUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="btn-gold w-full"
+            className="btn-dark w-full"
           >
             Book Now
           </a>

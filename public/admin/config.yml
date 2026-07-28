@@ -2,6 +2,11 @@ backend:
   name: git-gateway
   branch: main
 
+# Lets you edit content locally without Netlify Identity: run `npx decap-server`
+# alongside `npm run dev`, then open http://localhost:5173/admin.
+# Decap ignores this anywhere other than localhost, so it is safe in production.
+local_backend: true
+
 # Edits are committed straight to main, which triggers a Netlify rebuild.
 # Switch to `publish_mode: editorial_workflow` if Kayla should draft first
 # and have changes reviewed before they go live.
@@ -11,7 +16,7 @@ media_folder: public/images
 public_folder: /images
 
 site_url: https://www.empyreanbeauty.com
-logo_url: /images/Empyrean-Beauty-Revised-Large.png
+logo_url: /images/Empyrean-Beauty.png
 
 collections:
   # ── Site-wide settings ────────────────────────────────────────
@@ -32,12 +37,6 @@ collections:
               hint: "Paste your GlossGenius booking URL here. Every Book Now button on the site uses it.",
             }
           - { label: Phone, name: phone, widget: string }
-          - {
-              label: Old phone (unused),
-              name: phoneLegacy,
-              widget: string,
-              required: false,
-            }
           - { label: Email, name: email, widget: string }
 
           - label: Address
@@ -114,13 +113,6 @@ collections:
               - { label: Quote, name: quote, widget: text }
               - { label: Author, name: author, widget: string }
 
-          - label: Booth rental callout
-            name: boothRental
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Body, name: body, widget: string }
-
   # ── Services & pricing ────────────────────────────────────────
   - name: services
     label: Services & Pricing
@@ -144,24 +136,52 @@ collections:
               - { label: Tab label, name: label, widget: string }
               - { label: Short description, name: blurb, widget: string }
               - { label: Photo, name: image, widget: image }
-              - label: Services
-                name: items
+              - label: Service groups
+                name: groups
                 widget: list
-                summary: "{{fields.name}} — {{fields.price}}"
+                summary: "{{fields.name}}"
                 fields:
-                  - { label: Service, name: name, widget: string }
                   - {
-                      label: Description,
-                      name: description,
+                      label: Group heading,
+                      name: name,
+                      widget: string,
+                      hint: "e.g. Color Services, Luxury Treatments",
+                    }
+                  - {
+                      label: Group note,
+                      name: note,
                       widget: string,
                       required: false,
+                      hint: "Optional line shown under the heading, e.g. pricing caveats.",
                     }
-                  - {
-                      label: Price,
-                      name: price,
-                      widget: string,
-                      hint: "Free text, e.g. $40 or Starting at $250",
-                    }
+                  - label: Services
+                    name: items
+                    widget: list
+                    summary: "{{fields.name}} — {{fields.price}}"
+                    fields:
+                      - { label: Service, name: name, widget: string }
+                      - {
+                          label: Description,
+                          name: description,
+                          widget: string,
+                          required: false,
+                        }
+                      - {
+                          label: Price,
+                          name: price,
+                          widget: string,
+                          hint: "Free text, e.g. $75 or Starting at $250",
+                        }
+
+          - label: Salon policies
+            name: policies
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Policies
+                name: items
+                widget: list
+                field: { label: Policy, name: policy, widget: text }
 
   # ── About / team ──────────────────────────────────────────────
   - name: team
@@ -187,20 +207,6 @@ collections:
                 name: bio
                 widget: list
                 field: { label: Paragraph, name: paragraph, widget: text }
-
-          - label: Additional services
-            name: additionalServices
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Items
-                name: items
-                widget: list
-                summary: "{{fields.name}}"
-                fields:
-                  - { label: Name, name: name, widget: string }
-                  - { label: Logo, name: logo, widget: image }
-                  - { label: Description, name: description, widget: text }
 
   # ── Gallery ───────────────────────────────────────────────────
   - name: gallery

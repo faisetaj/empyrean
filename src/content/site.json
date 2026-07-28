@@ -1,10 +1,9 @@
 {
   "name": "Empyrean Beauty",
-  "tagline": "Salon and Barber Studio",
+  "tagline": "Beauty Parlor",
   "bookingUrl": "https://glossgenius.com/",
-  "phone": "936-250-0956",
-  "phoneLegacy": "713-255-2266",
-  "email": "info@empyreanbeauty.com",
+  "phone": "346-328-3182",
+  "email": "info@empyreanbeautyparlor.com",
   "address": {
     "street": "22186 Market Place Dr",
     "suite": "Suite #122",
@@ -25,14 +24,14 @@
   "hero": {
     "eyebrow": "New Caney, Texas",
     "title": "Empyrean Beauty",
-    "subtitle": "Salon and Barber Studio",
-    "intro": "Meaning “heaven-like.” Seventeen years of craft, sustainable product, and the most elevated chair in Montgomery County.",
+    "subtitle": "Beauty Parlor",
+    "intro": "Meaning “heaven-like.” Twenty-three years of craft, sustainable product, and the most elevated chair in Montgomery County.",
     "ctaPrimary": "Book Now",
     "ctaSecondary": "View Pricing"
   },
   "intro": {
-    "heading": "17+ Years of Experience",
-    "body": "Empyrean Beauty is a Salon & Barber Studio in New Caney, TX consisting of salon stylists and a barber. With over 17 years of experience and certifications, combined with an array of additional convenient services, we guarantee you the most elevated experience in the area."
+    "heading": "23+ Years of Experience",
+    "body": "Empyrean Beauty is a beauty parlor in New Caney, TX. With over 23 years of experience and certifications, combined with an array of additional convenient services, we guarantee you the most elevated experience in the area."
   },
   "booking": {
     "heading": "Book your visit today.",
@@ -52,9 +51,5 @@
       "quote": "Thank you so much for going out of your way and helping me get this color. It is like a treasure in these difficult times.",
       "author": "Sonia T."
     }
-  ],
-  "boothRental": {
-    "heading": "Booth Rentals Available",
-    "body": "Contact for more info!"
-  }
+  ]
 }
