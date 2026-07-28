@@ -26,9 +26,8 @@ import these directly — there is no database and no API call at runtime.
 | --------------- | ---------------------------------------------- |
 | `site.json`     | Contact details, hours, homepage, booking link |
 | `services.json` | The full price list (Ladies / Gentlemen)       |
-| `team.json`     | About page, staff bios, extra services         |
+| `team.json`     | About page and Kayla's bio                     |
 | `gallery.json`  | Gallery images and captions                    |
-| `careers.json`  | Careers page and open positions                |
 | `blog.json`     | Blog posts                                     |
 
 Images live in `public/images/` and are referenced as `/images/filename.jpg`.

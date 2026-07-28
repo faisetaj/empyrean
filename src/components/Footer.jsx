@@ -97,7 +97,6 @@ export default function Footer() {
                 ['/about', 'About'],
                 ['/pricing', 'Pricing'],
                 ['/gallery', 'Gallery'],
-                ['/careers', 'Careers'],
                 ['/blog', 'Blog'],
                 ['/contact', 'Contact'],
               ].map(([to, label]) => (

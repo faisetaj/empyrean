@@ -9,7 +9,6 @@ const LINKS = [
   { to: '/about', label: 'About' },
   { to: '/pricing', label: 'Pricing' },
   { to: '/gallery', label: 'Gallery' },
-  { to: '/careers', label: 'Careers' },
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];

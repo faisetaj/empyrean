@@ -232,34 +232,6 @@ collections:
                   hint: "Describe the photo — used by screen readers and search engines.",
                 }
 
-  # ── Careers ───────────────────────────────────────────────────
-  - name: careers
-    label: Careers
-    files:
-      - name: careers
-        label: Careers Page
-        file: src/content/careers.json
-        format: json
-        fields:
-          - { label: Heading, name: heading, widget: string }
-          - { label: Intro, name: intro, widget: string }
-          - { label: Body, name: body, widget: text }
-          - label: Open positions
-            name: openings
-            widget: list
-            summary: "{{fields.title}}"
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Type, name: type, widget: string }
-              - { label: Description, name: description, widget: text }
-          - label: Closing callout
-            name: cta
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Body, name: body, widget: string }
-              - { label: Button label, name: label, widget: string }
-
   # ── Blog ──────────────────────────────────────────────────────
   - name: blog
     label: Blog
