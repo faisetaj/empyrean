@@ -15,7 +15,7 @@ publish_mode: simple
 media_folder: public/images
 public_folder: /images
 
-site_url: https://www.empyreanbeauty.com
+site_url: https://www.empyreanbeautyparlor.com
 logo_url: /images/Empyrean-Beauty.png
 
 collections:

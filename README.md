@@ -34,7 +34,7 @@ Images live in `public/images/` and are referenced as `/images/filename.jpg`.
 
 ## The CMS — how Kayla logs in
 
-Decap CMS is served at **`/admin`** (e.g. `empyreanbeauty.com/admin`). It is
+Decap CMS is served at **`/admin`** (e.g. `empyreanbeautyparlor.com/admin`). It is
 *not* live until the Netlify steps below are done — the page will load but
 login will fail without Identity and Git Gateway enabled.
 
@@ -84,19 +84,30 @@ Homepage → Booking link**, and every button across the site follows it.
 > `site.json` currently ships a placeholder (`https://glossgenius.com/`).
 > Replace it with the real booking URL before launch.
 
-## Still to confirm before launch
+## Launch checklist
 
-- Real GlossGenius booking URL
-- **Canonical domain.** The email is now `@empyreanbeautyparlor.com`, but the
-  site's canonical URL, sitemap and structured data still say
-  `empyreanbeauty.com`. If the site is moving to `empyreanbeautyparlor.com`,
-  update `index.html`, `public/robots.txt` and `public/admin/config.yml`.
-- Opening hours (currently a sensible default, not confirmed)
-- Facebook / Instagram handles
-- Contact form currently opens the visitor's mail client; swap for Netlify
-  Forms or Formspree if a real inbox flow is wanted
-- Fresh photography — the recovered archive images are placeholders and a few
-  are stock rather than the actual parlor
+Nothing is published yet. In rough order:
+
+1. **Kayla creates her GlossGenius account**, then paste the booking URL into
+   the CMS (Site Settings → Booking link). Until then every Book Now button
+   points at the `https://glossgenius.com/` placeholder.
+2. **Deploy to Netlify** and complete the Identity / Git Gateway steps above.
+3. **Point `empyreanbeautyparlor.com` at Netlify** from GoDaddy. The canonical
+   URL, sitemap, structured data and social tags already use this domain.
+4. **Confirm opening hours** — the current ones are a placeholder assumption,
+   and they are published in the page's structured data, so Google will show
+   them.
+5. **Confirm Facebook / Instagram handles** — currently guessed from the
+   business name.
+
+Nice to have, not blocking:
+
+- Contact form opens the visitor's mail client. Swap for Netlify Forms or
+  Formspree if submissions should land in an inbox.
+- Fresh photography. The recovered archive images are placeholders and a few
+  are stock rather than the actual parlor.
+- Kayla's portrait is rendered monochrome to fit the palette; remove
+  `grayscale` in `src/pages/About.jsx` to show it in colour.
 
 ## Design notes
 
