@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Scissors, Sparkles } from 'lucide-react';
 import AmbientCanvas from '../components/AmbientCanvas.jsx';
 import Reveal from '../components/Reveal.jsx';
+import TracedFrame from '../components/TracedFrame.jsx';
 import { Section, SectionHeading } from '../components/Section.jsx';
 import { flattenServices } from '../lib/format.js';
 import site from '../content/site.json';
@@ -108,18 +109,14 @@ export default function Home() {
           </Reveal>
 
           <Reveal variant="scale" delay={120} className="md:col-span-7 md:-mt-16 lg:-mt-24">
-            <div className="relative md:ml-8 lg:ml-16">
-              <div
-                className="absolute -inset-2 border border-silver sm:-inset-3"
-                aria-hidden="true"
-              />
+            <TracedFrame className="md:ml-8 lg:ml-16">
               <img
                 src="/images/empyrean-beauty-gallery-6.jpg"
                 alt="Finished colour and style work from Empyrean Beauty"
-                className="relative h-[20rem] w-full object-cover sm:h-[26rem] md:h-[34rem]"
+                className="h-[20rem] w-full object-cover sm:h-[26rem] md:h-[34rem]"
                 loading="lazy"
               />
-            </div>
+            </TracedFrame>
           </Reveal>
         </div>
       </section>

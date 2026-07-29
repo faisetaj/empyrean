@@ -1,5 +1,6 @@
 import PageHero from '../components/PageHero.jsx';
 import Reveal from '../components/Reveal.jsx';
+import TracedFrame from '../components/TracedFrame.jsx';
 import { Section, SectionHeading } from '../components/Section.jsx';
 import team from '../content/team.json';
 
@@ -27,20 +28,16 @@ export default function About() {
                 }`}
               >
                 <figure className="md:col-span-2">
-                  <div className="relative">
-                    <div
-                      className="absolute -inset-2 border border-silver sm:-inset-3"
-                      aria-hidden="true"
-                    />
+                  <TracedFrame>
                     {/* Monochrome so the portrait sits in the black / white /
                         silver palette — drop `grayscale` to show it in colour. */}
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="relative aspect-[4/5] w-full object-cover object-center grayscale"
+                      className="aspect-[4/5] w-full object-cover object-center grayscale"
                       loading="lazy"
                     />
-                  </div>
+                  </TracedFrame>
                 </figure>
 
                 <div className="md:col-span-3">

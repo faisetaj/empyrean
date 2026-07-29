@@ -41,24 +41,66 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
+    /**
+     * Whiplash tresses — vertical strands that sway and curl at the tip, so
+     * the background of a hair salon reads as hair rather than generic waves.
+     *
+     * Adapted from Forever Components "Wave Tress" (Art Nouveau). The original
+     * is gold/sage/rose on dark green and its own metadata warns it is unsuited
+     * to light backgrounds; only the strand geometry is kept. The palette is
+     * charcoal on the page's white, and the floral blossoms are dropped — they
+     * fight the restraint of the rest of the site.
+     */
     const drawStrands = (t) => {
-      const count = width < 640 ? 7 : 11;
-      ctx.lineWidth = 1;
+      const time = t / 1000;
+      const count = width < 640 ? 6 : 9;
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
       for (let i = 0; i < count; i++) {
-        const p = (i + 0.5) / count;
-        const baseY = p * height;
-        const amp = height * 0.055 * (0.6 + 0.4 * Math.sin(i * 1.7));
-        ctx.beginPath();
-        for (let x = 0; x <= width; x += 10) {
-          const y =
-            baseY +
-            amp * Math.sin(x * 0.0055 + t * 0.00022 + i * 0.9) +
-            amp * 0.45 * Math.sin(x * 0.0121 - t * 0.00034 + i * 1.6);
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+        const s = {
+          x: 0.1 + 0.82 * (i / Math.max(1, count - 1)),
+          amp: 0.05 + 0.085 * (((i * 7) % 5) / 4),
+          curl: 1.1 + 1.6 * (((i * 3) % 5) / 4),
+          ph: i * 0.83,
+          sp: 0.45 + 0.5 * (((i * 5) % 4) / 3),
+        };
+
+        const bx = s.x * width;
+        const top = -0.06 * height;
+        const span = 1.12 * height;
+        const sway = s.amp * width;
+        const drift = Math.sin(time * s.sp + s.ph) * 0.5 + 0.5;
+
+        // Three offset passes give the strand a faint sheen, the way the
+        // original suggests hair. Kept far lighter here — this sits behind
+        // body copy and must never compete with it.
+        const passes = [
+          { off: -3, w: 1.0, a: 0.035 },
+          { off: 0, w: 2.2, a: 0.075 },
+          { off: 3, w: 1.3, a: 0.03 },
+        ];
+
+        for (const pass of passes) {
+          ctx.beginPath();
+          ctx.lineWidth = pass.w;
+          ctx.strokeStyle = `rgba(20,23,30,${pass.a})`;
+
+          const steps = 30;
+          for (let j = 0; j <= steps; j++) {
+            const u = j / steps;
+            const y = top + u * span;
+            const swell = Math.sin(u * Math.PI); // fullest through the middle
+            const wave = Math.sin(u * s.curl * Math.PI * 2 + time * 0.9 + s.ph);
+            const tip = Math.pow(u, 2.2) * Math.sin(time * 0.7 + s.ph) * 0.5;
+            const x =
+              bx + sway * (wave * swell + tip) + (drift - 0.5) * sway * 0.6 + pass.off * swell;
+            if (j === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
         }
-        ctx.strokeStyle = `rgba(20,23,30,${0.05 + 0.03 * Math.sin(i * 2.1)})`;
-        ctx.stroke();
       }
     };
 

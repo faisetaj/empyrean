@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, Info } from 'lucide-react';
 import PageHero from '../components/PageHero.jsx';
 import Reveal from '../components/Reveal.jsx';
+import TracedFrame from '../components/TracedFrame.jsx';
 import { Section } from '../components/Section.jsx';
 import services from '../content/services.json';
 import site from '../content/site.json';
@@ -61,18 +62,14 @@ export default function Pricing() {
         >
           <Reveal variant="left" className="lg:col-span-2">
             <div className="lg:sticky lg:top-28">
-              <div className="relative">
-                <div
-                  className="absolute -inset-2 border border-silver sm:-inset-3"
-                  aria-hidden="true"
-                />
+              <TracedFrame>
                 <img
                   src={category.image}
                   alt={`${category.label} services at Empyrean Beauty`}
-                  className="relative aspect-[4/5] w-full object-cover"
+                  className="aspect-[4/5] w-full object-cover"
                   loading="lazy"
                 />
-              </div>
+              </TracedFrame>
               <h2 className="mt-8 font-display text-[2.15rem] font-light text-ink sm:text-4xl">
                 {category.label}
               </h2>
