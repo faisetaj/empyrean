@@ -13,7 +13,15 @@ import NotFound from './pages/NotFound.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+
+  // Block body, not a concise arrow. `window.scrollTo` does not reliably
+  // return undefined across engines, and whatever it returns would be taken
+  // as the effect's cleanup function and called on the next route change —
+  // which throws and unmounts the whole tree.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return null;
 }
 

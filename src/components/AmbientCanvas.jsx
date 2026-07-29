@@ -104,41 +104,82 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
       }
     };
 
+    /**
+     * Drifting folds, like light across draped silk.
+     *
+     * This was a stack of soft radial gradients, which measured at 99%
+     * coverage and was still invisible — a near-uniform wash has no edges for
+     * the eye to catch. Drawn as contour lines instead: broad, slow and
+     * horizontal, so it reads as fabric and stays distinct from the vertical
+     * tresses.
+     */
     const drawVeil = (t) => {
-      const blooms = [
-        { fx: 0.24, fy: 0.3, r: 0.42, sx: 0.00013, sy: 0.00019 },
-        { fx: 0.72, fy: 0.62, r: 0.5, sx: -0.00017, sy: 0.00011 },
-        { fx: 0.5, fy: 0.18, r: 0.34, sx: 0.00021, sy: -0.00015 },
-      ];
-      const base = Math.max(width, height);
-      blooms.forEach((b, i) => {
-        const cx = width * (b.fx + 0.07 * Math.sin(t * b.sx + i));
-        const cy = height * (b.fy + 0.09 * Math.cos(t * b.sy + i * 1.4));
-        const r = base * b.r;
-        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-        g.addColorStop(0, 'rgba(20,23,30,0.045)');
-        g.addColorStop(0.6, 'rgba(20,23,30,0.014)');
-        g.addColorStop(1, 'rgba(20,23,30,0)');
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, width, height);
-      });
+      const time = t / 1000;
+      const count = width < 640 ? 5 : 7;
+
+      ctx.lineCap = 'round';
+
+      for (let i = 0; i < count; i++) {
+        const p = (i + 0.5) / count;
+        const baseY = p * height;
+        const amp = height * 0.13 * (0.55 + 0.45 * Math.sin(i * 1.3));
+
+        // Paired strokes a few pixels apart give each fold a soft edge
+        // instead of a single hard hairline.
+        for (const [off, w, a] of [
+          [-2.5, 1.6, 0.05],
+          [0, 2.6, 0.1],
+          [2.5, 1.6, 0.045],
+        ]) {
+          ctx.beginPath();
+          ctx.lineWidth = w;
+          ctx.strokeStyle = `rgba(20,23,30,${a})`;
+          for (let x = 0; x <= width; x += 12) {
+            const u = x / Math.max(1, width);
+            const y =
+              baseY +
+              off +
+              amp * Math.sin(u * Math.PI * 1.4 + time * 0.16 + i * 0.9) +
+              amp * 0.35 * Math.sin(u * Math.PI * 2.7 - time * 0.11 + i * 1.7);
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
     };
 
+    /**
+     * Motes suspended in light.
+     *
+     * The first pass drew ~30 sub-pixel specks and measured 0.1% coverage —
+     * technically painting, effectively invisible. Roughly three times as
+     * many, several times larger, each with a soft halo so it reads at a
+     * glance rather than only under inspection.
+     */
     const drawDust = (t) => {
-      const count = width < 640 ? 26 : 52;
+      const count = width < 640 ? 70 : 130;
+
       for (let i = 0; i < count; i++) {
         // Deterministic pseudo-random placement so motes don't jump on resize.
         const seed = i * 127.1;
-        const fx = (Math.sin(seed) * 0.5 + 0.5);
-        const fy = (Math.cos(seed * 1.7) * 0.5 + 0.5);
-        const drift = 0.045 * Math.sin(t * 0.00018 + i * 0.8);
-        const bob = 0.06 * Math.cos(t * 0.00013 + i * 1.3);
+        const fx = Math.sin(seed) * 0.5 + 0.5;
+        const fy = Math.cos(seed * 1.7) * 0.5 + 0.5;
+        const drift = 0.05 * Math.sin(t * 0.00018 + i * 0.8);
+        const bob = 0.07 * Math.cos(t * 0.00013 + i * 1.3);
         const x = width * (fx + drift);
         const y = height * (fy + bob);
-        const r = 0.8 + 1.5 * ((Math.sin(seed * 3.3) * 0.5 + 0.5));
+        const size = Math.sin(seed * 3.3) * 0.5 + 0.5;
+        const r = 1.6 + 3.4 * size;
+        const a = 0.07 + 0.09 * (Math.sin(seed * 2.2) * 0.5 + 0.5);
+
+        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, `rgba(20,23,30,${a})`);
+        g.addColorStop(0.55, `rgba(20,23,30,${a * 0.5})`);
+        g.addColorStop(1, 'rgba(20,23,30,0)');
+        ctx.fillStyle = g;
         ctx.beginPath();
         ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(20,23,30,${0.05 + 0.05 * (Math.sin(seed * 2.2) * 0.5 + 0.5)})`;
         ctx.fill();
       }
     };
