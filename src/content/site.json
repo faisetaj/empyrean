@@ -1,9 +1,9 @@
 {
   "name": "Empyrean Beauty",
   "tagline": "Beauty Parlor",
-  "bookingUrl": "https://glossgenius.com/",
+  "bookingUrl": "https://www.vagaro.com/",
   "phone": "346-328-3182",
-  "email": "info@empyreanbeautyparlor.com",
+  "email": "kayladar@gmail.com",
   "address": {
     "street": "22186 Market Place Dr",
     "suite": "Suite #122",
@@ -17,9 +17,18 @@
     "instagram": "https://www.instagram.com/empyreanbeauty"
   },
   "hours": [
-    { "days": "Tuesday – Friday", "time": "10:00 AM – 7:00 PM" },
-    { "days": "Saturday", "time": "9:00 AM – 6:00 PM" },
-    { "days": "Sunday – Monday", "time": "Closed" }
+    {
+      "days": "Tuesday – Friday",
+      "time": "10:00 AM – 7:00 PM"
+    },
+    {
+      "days": "Saturday",
+      "time": "9:00 AM – 6:00 PM"
+    },
+    {
+      "days": "Sunday – Monday",
+      "time": "Closed"
+    }
   ],
   "hero": {
     "eyebrow": "New Caney, Texas",
@@ -42,8 +51,10 @@
     "heading": "Salon Products",
     "body": "We prefer quality & sustainability.",
     "brands": [
-      { "name": "Davines", "logo": "/images/Davines-Logo.jpg" },
-      { "name": "Hattori Hanzo Shears", "logo": "/images/hattori-hanzo-shears-logo.png" }
+      {
+        "name": "Davines",
+        "logo": "/images/Davines-Logo.jpg"
+      }
     ]
   },
   "testimonials": [

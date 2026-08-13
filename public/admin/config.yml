@@ -31,10 +31,10 @@ collections:
           - { label: Salon name, name: name, widget: string }
           - { label: Tagline, name: tagline, widget: string }
           - {
-              label: Booking link (GlossGenius),
+              label: Booking link (Vagaro),
               name: bookingUrl,
               widget: string,
-              hint: "Paste your GlossGenius booking URL here. Every Book Now button on the site uses it.",
+              hint: "Paste your Vagaro booking URL here (e.g. https://www.vagaro.com/empyreanbeautyparlor). Every Book Now button on the site uses it.",
             }
           - { label: Phone, name: phone, widget: string }
           - { label: Email, name: email, widget: string }

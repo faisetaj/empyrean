@@ -157,7 +157,38 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
      * many, several times larger, each with a soft halo so it reads at a
      * glance rather than only under inspection.
      */
+    /**
+     * One mote, pre-rendered once to an offscreen canvas.
+     *
+     * The first visible version built a fresh radial gradient per mote per
+     * frame — 130 gradient objects allocated 30 times a second, all identical
+     * apart from scale and alpha. Drawing a cached sprite instead makes the
+     * per-frame cost a plain blit.
+     */
+    const SPRITE_R = 16;
+    let sprite = null;
+
+    const buildSprite = () => {
+      const c = document.createElement('canvas');
+      c.width = c.height = SPRITE_R * 2;
+      const g2 = c.getContext('2d');
+      if (!g2) return null;
+      const g = g2.createRadialGradient(
+        SPRITE_R, SPRITE_R, 0,
+        SPRITE_R, SPRITE_R, SPRITE_R
+      );
+      g.addColorStop(0, 'rgba(20,23,30,1)');
+      g.addColorStop(0.55, 'rgba(20,23,30,0.5)');
+      g.addColorStop(1, 'rgba(20,23,30,0)');
+      g2.fillStyle = g;
+      g2.fillRect(0, 0, SPRITE_R * 2, SPRITE_R * 2);
+      return c;
+    };
+
     const drawDust = (t) => {
+      if (!sprite) sprite = buildSprite();
+      if (!sprite) return;
+
       const count = width < 640 ? 70 : 130;
 
       for (let i = 0; i < count; i++) {
@@ -173,15 +204,11 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
         const r = 1.6 + 3.4 * size;
         const a = 0.07 + 0.09 * (Math.sin(seed * 2.2) * 0.5 + 0.5);
 
-        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0, `rgba(20,23,30,${a})`);
-        g.addColorStop(0.55, `rgba(20,23,30,${a * 0.5})`);
-        g.addColorStop(1, 'rgba(20,23,30,0)');
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = a;
+        ctx.drawImage(sprite, x - r, y - r, r * 2, r * 2);
       }
+
+      ctx.globalAlpha = 1;
     };
 
     const render = (t) => {
@@ -191,9 +218,30 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
       else drawStrands(t);
     };
 
+    // Ambient texture does not need 60fps. Half that is indistinguishable for
+    // motion this slow and halves the work on every device running it.
+    const FRAME_MS = 1000 / 30;
+    let last = 0;
+
     const loop = (t) => {
-      if (visible) render(t);
       raf = requestAnimationFrame(loop);
+      if (t - last < FRAME_MS) return;
+      last = t;
+      render(t);
+    };
+
+    const start = () => {
+      // Guard against double-starting: the observer and visibilitychange can
+      // both fire, and two live rAF chains would double the frame rate.
+      if (raf !== null || reduced) return;
+      last = 0;
+      raf = requestAnimationFrame(loop);
+    };
+
+    const stop = () => {
+      if (raf === null) return;
+      cancelAnimationFrame(raf);
+      raf = null;
     };
 
     setSize();
@@ -201,7 +249,7 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
     if (reduced) {
       render(0);
     } else {
-      raf = requestAnimationFrame(loop);
+      start();
     }
 
     const onResize = () => {
@@ -210,11 +258,24 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
     };
     window.addEventListener('resize', onResize);
 
+    // A backgrounded tab should cost nothing. Browsers throttle rAF heavily
+    // but do not reliably stop it, so pause explicitly.
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else if (visible) start();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     let observer;
     if (typeof IntersectionObserver !== 'undefined') {
       observer = new IntersectionObserver(
         ([entry]) => {
           visible = entry.isIntersecting;
+          // Previously this only gated the draw call while the rAF chain kept
+          // rescheduling forever — a scrolled-past canvas still woke the main
+          // thread every frame. Stop the loop outright instead.
+          if (visible && !document.hidden) start();
+          else stop();
         },
         { rootMargin: '120px' }
       );
@@ -222,8 +283,9 @@ export default function AmbientCanvas({ motif = 'strands', className = '' }) {
     }
 
     return () => {
-      if (raf) cancelAnimationFrame(raf);
+      stop();
       window.removeEventListener('resize', onResize);
+      document.removeEventListener('visibilitychange', onVisibility);
       observer?.disconnect();
     };
   }, [motif]);

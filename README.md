@@ -70,19 +70,39 @@ GoDaddy — either the four `A` records for the apex plus a `CNAME` for `www`,
 or switch the nameservers to Netlify's for simpler management. HTTPS is issued
 automatically once DNS resolves.
 
-## Booking / GlossGenius
+## Booking / Vagaro
 
-Kayla uses **GlossGenius** for scheduling and payments. GlossGenius has no
-public API and no Zapier integration, so the site cannot read her services or
-prices from it automatically — the two are kept in sync by hand through the
-CMS.
+Kayla is setting up **Vagaro** for scheduling and payments (moved from
+GlossGenius, July 2026).
 
-What *is* wired up: every "Book Now" button links out to her GlossGenius
+What is wired up today: every "Book Now" button links out to her Vagaro
 booking page. Set that URL once in the CMS under **Site Settings → General &
 Homepage → Booking link**, and every button across the site follows it.
 
-> `site.json` currently ships a placeholder (`https://glossgenius.com/`).
-> Replace it with the real booking URL before launch.
+> `site.json` currently ships a placeholder (`https://www.vagaro.com/`).
+> Replace it with her real booking URL before launch.
+
+### Auto-syncing services and prices — possible, but gated
+
+Unlike GlossGenius, **Vagaro has a public REST API and webhooks** (OAuth 2.0;
+webhooks fire on appointments, customers, employees and transactions). So a
+true push-to-site sync — her price list living in Vagaro and the website
+following it — is genuinely achievable here, which it never was before.
+
+It is gated on her account, not on our code. Per Vagaro's developer terms, API
+access requires:
+
+- a request via Settings → Developers → APIs & Webhooks
+- a paid, non-trial account **running Vagaro credit card processing**
+- roughly 5–7 business days for approval
+- about $10/month, including 5,000 API calls
+
+Docs: <https://docs.vagaro.com/public/reference/api-introduction>
+
+Until all of that is true, pricing stays in `src/content/services.json` and is
+edited through the CMS. That is a deliberate ordering: the content layer works
+on day one, and the API sync can replace it later without touching any page —
+every page already reads from the JSON rather than from hardcoded markup.
 
 ## Copy changes without opening an editor
 
@@ -100,9 +120,9 @@ Needs the [Claude GitHub App](https://github.com/apps/claude) installed and an
 
 Nothing is published yet. In rough order:
 
-1. **Kayla creates her GlossGenius account**, then paste the booking URL into
-   the CMS (Site Settings → Booking link). Until then every Book Now button
-   points at the `https://glossgenius.com/` placeholder.
+1. **Kayla finishes her Vagaro setup**, then paste the booking URL into the CMS
+   (Site Settings → Booking link). Until then every Book Now button points at
+   the `https://www.vagaro.com/` placeholder.
 2. **Deploy to Netlify** and complete the Identity / Git Gateway steps above.
 3. **Point `empyreanbeautyparlor.com` at Netlify** from GoDaddy. The canonical
    URL, sitemap, structured data and social tags already use this domain.
