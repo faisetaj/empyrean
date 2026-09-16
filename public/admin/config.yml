@@ -34,7 +34,7 @@ collections:
               label: Booking link (Vagaro),
               name: bookingUrl,
               widget: string,
-              hint: "Paste your Vagaro booking URL here (e.g. https://www.vagaro.com/empyreanbeautyparlor). Every Book Now button on the site uses it.",
+              hint: "Your Vagaro booking page (e.g. https://www.vagaro.com/empyreanbeautyparlor/services). Every Book Now button uses it, unless a price category or service group below has its own booking link.",
             }
           - { label: Phone, name: phone, widget: string }
           - { label: Email, name: email, widget: string }
@@ -136,6 +136,13 @@ collections:
               - { label: Tab label, name: label, widget: string }
               - { label: Short description, name: blurb, widget: string }
               - { label: Photo, name: image, widget: image }
+              - {
+                  label: Booking link,
+                  name: bookingUrl,
+                  widget: string,
+                  required: false,
+                  hint: "Optional. A Vagaro widget link that opens on this category's services, used by the Book Now button on its pricing tab. Leave blank to use the main booking link.",
+                }
               - label: Service groups
                 name: groups
                 widget: list
@@ -153,6 +160,13 @@ collections:
                       widget: string,
                       required: false,
                       hint: "Optional line shown under the heading, e.g. pricing caveats.",
+                    }
+                  - {
+                      label: Booking link,
+                      name: bookingUrl,
+                      widget: string,
+                      required: false,
+                      hint: "Optional. A Vagaro widget link for just these services, e.g. color. Adds a Book link beside the heading; leave blank for none.",
                     }
                   - label: Services
                     name: items

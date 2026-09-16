@@ -74,8 +74,11 @@ export default function Pricing() {
                 {category.label}
               </h2>
               <p className="mt-2 text-sm text-slate">{category.blurb}</p>
+              {/* Category and group links are optional Vagaro widget URLs that
+                  open straight on those services; blank falls back to the
+                  main booking page. */}
               <a
-                href={site.bookingUrl}
+                href={category.bookingUrl || site.bookingUrl}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="btn-dark mt-6 w-full"
@@ -94,7 +97,23 @@ export default function Pricing() {
                     <h3 className="font-display text-2xl font-normal text-ink sm:text-[1.7rem]">
                       {group.name}
                     </h3>
-                    <span className="eyebrow hidden sm:inline">Price</span>
+                    {group.bookingUrl ? (
+                      <a
+                        href={group.bookingUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={`Book ${group.name}`}
+                        className="group/book inline-flex shrink-0 items-center gap-1.5 font-sans text-[0.68rem] font-semibold uppercase tracking-wide2 text-ink transition-colors hover:text-slate"
+                      >
+                        Book
+                        <ArrowRight
+                          size={13}
+                          className="transition-transform duration-300 group-hover/book:translate-x-1"
+                        />
+                      </a>
+                    ) : (
+                      <span className="eyebrow hidden sm:inline">Price</span>
+                    )}
                   </div>
                   {group.note && (
                     <p className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-slate">

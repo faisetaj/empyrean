@@ -149,11 +149,13 @@ export default function Home() {
                 className={i === 1 ? 'md:mt-14' : ''}
               >
                 <article className="group flex h-full flex-col overflow-hidden border border-pearl bg-white transition-shadow duration-500 hover:shadow-card">
-                  <div className={`overflow-hidden ${i === 0 ? 'h-48 sm:h-64' : 'h-48 sm:h-52'}`}>
+                  {/* Portrait crop: the photos are hair results, and a short
+                      landscape band cut them down to a slice of face. */}
+                  <div className="overflow-hidden">
                     <img
                       src={cat.image}
                       alt={`${cat.label} services at Empyrean Beauty`}
-                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>

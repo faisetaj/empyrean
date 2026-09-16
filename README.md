@@ -40,6 +40,11 @@ at all** — which is what removes the location. Do the same for new photos.
 The CMS uploads files exactly as given, so a photo Kayla adds from her phone
 through `/admin` goes live full size and with its metadata intact.
 
+Three photos recovered from the 2022 site (`empyrean-beauty-gallery-4/5/6`)
+stay in the gallery: they show real parlor work. The other four archive images
+were stock photography — studio backdrops and models — and are deliberately
+not used, since the gallery presents itself as work from these chairs.
+
 ## The CMS — how Kayla logs in
 
 Decap CMS is served at **`/admin`** (e.g. `empyreanbeautyparlor.com/admin`). It is
@@ -84,9 +89,21 @@ Kayla uses **Vagaro** for scheduling and payments (moved from GlossGenius,
 July 2026).
 
 What is wired up today: every "Book Now" button links out to her Vagaro
-listing, <https://www.vagaro.com/empyreanbeautyparlor>. The URL is set once in
-the CMS under **Site Settings → General & Homepage → Booking link**, and every
-button across the site follows it.
+services page, <https://www.vagaro.com/empyreanbeautyparlor/services>. The URL
+is set once in the CMS under **Site Settings → General & Homepage → Booking
+link**, and every button across the site follows it.
+
+Linking to one category of her services needs a **Vagaro booking widget**. A
+URL fragment such as `#col40485475` does nothing: Vagaro renders the service
+list with JavaScript after load, so the browser has no element to scroll to
+when it reads the hash. Widget links can be pasted into two optional
+`bookingUrl` fields in `services.json` (both editable in the CMS):
+
+- **Category** (Ladies, Gentlemen) — the Book Now button on that pricing tab
+  uses it instead of the main link.
+- **Service group** (Color Services, Hair Extensions, …) — adds a "Book" link
+  beside that group's heading. With no link set, the heading shows "Price" as
+  before.
 
 ### Auto-syncing services and prices — possible, but gated
 
