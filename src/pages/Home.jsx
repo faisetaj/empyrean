@@ -72,10 +72,13 @@ export default function Home() {
           </div>
 
           <div className="relative order-1 h-[46vh] min-h-[20rem] overflow-hidden lg:order-2 lg:col-span-7 lg:h-auto lg:min-h-[38rem]">
+            {/* Absolute so the photo never sizes the row. In flow, `h-full`
+                inside an auto-height column falls back to the image's own
+                aspect ratio, and a portrait photo grew the hero to ~1000px. */}
             <img
               src="/images/golden-blonde-waves.jpg"
               alt="Golden blonde colour in long, loose waves at Empyrean Beauty"
-              className="h-full w-full animate-ken-burns object-cover object-center"
+              className="absolute inset-0 h-full w-full animate-ken-burns object-cover object-center"
             />
           </div>
         </div>
