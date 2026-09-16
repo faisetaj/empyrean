@@ -112,7 +112,20 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-pearl pt-7 text-center text-xs text-slate sm:flex-row sm:text-left">
           <p>© {YEAR} Empyrean Beauty Parlor.</p>
-          <p>Designed &amp; administered by Faisel Tajiran.</p>
+          <p>
+            Designed &amp; administered by{' '}
+            {/* noopener without noreferrer, so the referral from this site
+                shows up in the designer's own analytics. */}
+            <a
+              href="https://faiseltajiran.com/"
+              target="_blank"
+              rel="noopener"
+              className="text-ink underline decoration-silver underline-offset-4 transition-colors hover:decoration-ink"
+            >
+              Faisel Tajiran
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>
