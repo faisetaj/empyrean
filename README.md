@@ -93,17 +93,39 @@ services page, <https://www.vagaro.com/empyreanbeautyparlor/services>. The URL
 is set once in the CMS under **Site Settings → General & Homepage → Booking
 link**, and every button across the site follows it.
 
-Linking to one category of her services needs a **Vagaro booking widget**. A
-URL fragment such as `#col40485475` does nothing: Vagaro renders the service
-list with JavaScript after load, so the browser has no element to scroll to
-when it reads the hash. Widget links can be pasted into two optional
-`bookingUrl` fields in `services.json` (both editable in the CMS):
+`services.json` has two optional `bookingUrl` fields, both editable in the CMS:
 
 - **Category** (Ladies, Gentlemen) — the Book Now button on that pricing tab
-  uses it instead of the main link.
+  uses it instead of the main link. Both are set to **Vagaro booking widget**
+  URLs, which show a filtered list: the gentlemen link shows only the men's
+  haircut, the ladies link everything else.
 - **Service group** (Color Services, Hair Extensions, …) — adds a "Book" link
   beside that group's heading. With no link set, the heading shows "Price" as
   before.
+
+The group links scroll Vagaro's services page to the matching category using
+a **text fragment**, e.g. `…/services#:~:text=Hair%20Color%20and%20Other`.
+Tested by clicking a `target="_blank"` link, which is how visitors arrive
+(September 2026). What does not work, so it is not rediscovered:
+
+- ID fragments such as `#col40485475` or `#headingOne40485475`: Vagaro builds
+  the service list with JavaScript after load, so there is nothing to scroll
+  to when the browser reads the hash.
+- Text fragments on a **widget** URL: the widget page ignores them. Hence
+  filtering via widget on categories, scrolling via text fragment on groups.
+
+A text fragment matches the visible words exactly, so **renaming a category in
+Vagaro silently breaks its link** — the page still opens, just at the top.
+The current names are "Haircuts and Other", "Hair Color and Other", "Hair
+Partial Highlight and Other", "Hair Highlight and Other" and "Extensions".
+Treatments have no category of their own there, so Luxury Treatments targets
+the "Brazilian Blowout" service instead.
+
+Widget URLs come from the popup Vagaro's embed script opens: its `<script>`
+snippet cannot be pasted into the CMS, and Vagaro does not keep old widget
+codes. To get the URL from a new snippet, load it on a test page, click its
+button, and copy the `BusinessWidget.aspx?enc=…` address of the iframe it
+opens.
 
 ### Auto-syncing services and prices — possible, but gated
 

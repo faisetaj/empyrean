@@ -5,9 +5,11 @@
       "label": "Ladies",
       "blurb": "Cuts, colour, treatments and extensions.",
       "image": "/images/rich-brunette-soft-waves.jpg",
+      "bookingUrl": "https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVAyQXpNjtvabW7QykItbdhrlxXf+IFgIWEZg/rAZa7OPHmiV3b0rJfTnVihPqKNFTu/DrRPahndqQKQ4DA/xyUFVv0hxUBfMMoc9nvt8mEC9QxkXIZlPD4CZPaALAZrPNUtz1vcuaJaHlKGNrO6F1ipDf967AuF+Oc5Q/D3Oh+lfTKtns7T8VlSenouN5MPCppGg4D1VL9JUUiDFBVYxKDAJRvcSWJwTX7JzAharHVoXQWbVNjWgRzcxK4ydWD00ugV1GPTNVDTpaTneYU5oTucijDJQAqz+5ty+J/BX0il3dpTeqzhp0Vq6ASxvFuJvGEmDoJF+zYhVTXXRFqFV3RVnEr1ZSFbfLomYrb5/cM309y5cDq3XL6ctqTDbmWLJDmJYxzMx2boBZIUOFH3O7dM=",
       "groups": [
         {
           "name": "Haircuts & Styling",
+          "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Haircuts%20and%20Other",
           "items": [
             {
               "name": "Women's Signature Haircut",
@@ -19,6 +21,7 @@
         },
         {
           "name": "Color Services",
+          "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Hair%20Color%20and%20Other",
           "items": [
             { "name": "Root Retouch", "description": "", "price": "Starting at $110" },
             { "name": "Single Process Color", "description": "", "price": "Starting at $140" },
@@ -35,6 +38,7 @@
         },
         {
           "name": "Luxury Treatments",
+          "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Brazilian%20Blowout",
           "items": [
             { "name": "Deep Conditioning Treatment", "description": "", "price": "$35" },
             { "name": "Bond Repair Treatment", "description": "", "price": "$50" },
@@ -48,6 +52,7 @@
         },
         {
           "name": "Hair Extensions",
+          "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Extensions",
           "note": "Installation pricing does not include the hair itself.",
           "items": [
             {
@@ -95,6 +100,7 @@
       "label": "Gentlemen",
       "blurb": "Cuts and trims.",
       "image": "/images/gentlemens-cut.jpg",
+      "bookingUrl": "https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVAyQXpNjtvabW7QykItbdhrlxXf+IFgIWEZg/rAZa7OPHmiV3b0rJfTnVihPqKNFTu/DrRPahndqQKQ4DA/xyUFVv0hxUBfMMoc9nvt8mEC9QxkXIZlPD4CZPaALAZrPNUtz1vcuaJaHlKGNrO6F1ipDf967AuF+Oc5Q/D3Oh+lfTKtns7T8VlSenouN5MPCppGg4D1VL9JUUiDFBVYxKDAJRvcSWJwTX7JzAharHVoXQWbVNjWgRzcxK4ydWD00ugV1GPTNVDTpaTneYU5oTucijDJQAqz+5ty+J/BX0il3dpTeqzhp0Vq6ASxvFuJvGEmDoJF+zYhVTXXRFqFV3RVnEr1ZSFbfLomYrb5/cM309y5cDq3XL6ctqTDbmWLJDj8PabNbHQqzrt167mo/E+o=",
       "groups": [
         {
           "name": "Cuts & Trims",

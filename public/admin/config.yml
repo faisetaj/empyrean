@@ -166,7 +166,7 @@ collections:
                       name: bookingUrl,
                       widget: string,
                       required: false,
-                      hint: "Optional. A Vagaro widget link for just these services, e.g. color. Adds a Book link beside the heading; leave blank for none.",
+                      hint: "Optional. Adds a Book link beside the heading. To land on one Vagaro category, use its exact name, e.g. https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Hair%20Color%20and%20Other — if the category is renamed in Vagaro, update this too.",
                     }
                   - label: Services
                     name: items
