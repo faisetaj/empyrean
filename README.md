@@ -72,15 +72,13 @@ automatically once DNS resolves.
 
 ## Booking / Vagaro
 
-Kayla is setting up **Vagaro** for scheduling and payments (moved from
-GlossGenius, July 2026).
+Kayla uses **Vagaro** for scheduling and payments (moved from GlossGenius,
+July 2026).
 
 What is wired up today: every "Book Now" button links out to her Vagaro
-booking page. Set that URL once in the CMS under **Site Settings → General &
-Homepage → Booking link**, and every button across the site follows it.
-
-> `site.json` currently ships a placeholder (`https://www.vagaro.com/`).
-> Replace it with her real booking URL before launch.
+listing, <https://www.vagaro.com/empyreanbeautyparlor>. The URL is set once in
+the CMS under **Site Settings → General & Homepage → Booking link**, and every
+button across the site follows it.
 
 ### Auto-syncing services and prices — possible, but gated
 
@@ -118,19 +116,20 @@ Needs the [Claude GitHub App](https://github.com/apps/claude) installed and an
 
 ## Launch checklist
 
-Nothing is published yet. In rough order:
+Live at <https://www.empyreanbeautyparlor.com> since September 2026 — GoDaddy
+DNS points at Netlify, `www` is the primary domain and the bare domain
+redirects to it. Still open:
 
-1. **Kayla finishes her Vagaro setup**, then paste the booking URL into the CMS
-   (Site Settings → Booking link). Until then every Book Now button points at
-   the `https://www.vagaro.com/` placeholder.
-2. **Deploy to Netlify** and complete the Identity / Git Gateway steps above.
-3. **Point `empyreanbeautyparlor.com` at Netlify** from GoDaddy. The canonical
-   URL, sitemap, structured data and social tags already use this domain.
-4. **Confirm opening hours** — the current ones are a placeholder assumption,
+1. **Complete the Identity / Git Gateway steps above** so Kayla can log in at
+   `/admin`. Git Gateway is deprecated by Netlify but still works; if it is
+   ever switched off, only CMS editing stops and the site is unaffected.
+2. **Confirm opening hours** — the current ones are a placeholder assumption,
    and they are published in the page's structured data, so Google will show
    them.
-5. **Confirm Facebook / Instagram handles** — currently guessed from the
+3. **Confirm Facebook / Instagram handles** — currently guessed from the
    business name.
+4. **Submit the sitemap** (`/sitemap.xml`, generated at build) in Google
+   Search Console.
 
 Nice to have, not blocking:
 
