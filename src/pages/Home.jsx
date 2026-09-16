@@ -130,13 +130,14 @@ export default function Home() {
         <div className="grid items-end gap-6 md:grid-cols-12">
           <SectionHeading
             eyebrow="What We Do"
-            title="Cut, Color & Finish"
+            title="Extensions, Color & Cut"
             align="left"
             className="md:col-span-7"
           />
           <Reveal variant="right" delay={140} className="md:col-span-5">
             <p className="text-[0.95rem] leading-relaxed text-slate sm:text-base md:text-right">
-              A full parlor for colour and cut — for ladies and gentlemen alike.
+              Extensions are our specialty, with a full parlor for colour and cut
+              — for ladies and gentlemen alike.
             </p>
           </Reveal>
         </div>

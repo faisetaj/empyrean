@@ -3,10 +3,44 @@
     {
       "id": "ladies",
       "label": "Ladies",
-      "blurb": "Cuts, colour, treatments and extensions.",
+      "blurb": "Extensions, our specialty — plus cuts, colour and treatments.",
       "image": "/images/rich-brunette-soft-waves.jpg",
       "bookingUrl": "https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVAyQXpNjtvabW7QykItbdhrlxXf+IFgIWEZg/rAZa7OPHmiV3b0rJfTnVihPqKNFTu/DrRPahndqQKQ4DA/xyUFVv0hxUBfMMoc9nvt8mEC9QxkXIZlPD4CZPaALAZrPNUtz1vcuaJaHlKGNrO6F1ipDf967AuF+Oc5Q/D3Oh+lfTKtns7T8VlSenouN5MPCppGg4D1VL9JUUiDFBVYxKDAJRvcSWJwTX7JzAharHVoXQWbVNjWgRzcxK4ydWD00ugV1GPTNVDTpaTneYU5oTucijDJQAqz+5ty+J/BX0il3dpTeqzhp0Vq6ASxvFuJvGEmDoJF+zYhVTXXRFqFV3RVnEr1ZSFbfLomYrb5/cM309y5cDq3XL6ctqTDbmWLJDmJYxzMx2boBZIUOFH3O7dM=",
       "groups": [
+        {
+          "name": "Hair Extensions",
+          "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Extensions",
+          "note": "Installation pricing does not include the hair itself.",
+          "items": [
+            {
+              "name": "Extension Consultation",
+              "description": "Credited toward installation",
+              "price": "$50"
+            },
+            {
+              "name": "Hand-Tied Wefts",
+              "description": "Installation — hair not included",
+              "price": "Starting at $200"
+            },
+            {
+              "name": "Sew-In Wefts",
+              "description": "Installation — hair not included",
+              "price": "Starting at $200"
+            },
+            {
+              "name": "I-Tip / K-Tip Extensions",
+              "description": "Installation — hair not included",
+              "price": "Starting at $700"
+            },
+            { "name": "Weft Move-Up", "description": "Maintenance", "price": "Starting at $200" },
+            { "name": "Extension Removal", "description": "Maintenance", "price": "Starting at $100" },
+            {
+              "name": "Premium Extension Hair",
+              "description": "Varies by length, density and color",
+              "price": "Quoted at consultation"
+            }
+          ]
+        },
         {
           "name": "Haircuts & Styling",
           "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Haircuts%20and%20Other",
@@ -47,40 +81,6 @@
               "name": "Keratin Smoothing Treatment",
               "description": "",
               "price": "Starting at $250"
-            }
-          ]
-        },
-        {
-          "name": "Hair Extensions",
-          "bookingUrl": "https://www.vagaro.com/empyreanbeautyparlor/services#:~:text=Extensions",
-          "note": "Installation pricing does not include the hair itself.",
-          "items": [
-            {
-              "name": "Extension Consultation",
-              "description": "Credited toward installation",
-              "price": "$50"
-            },
-            {
-              "name": "Hand-Tied Wefts",
-              "description": "Installation — hair not included",
-              "price": "Starting at $200"
-            },
-            {
-              "name": "Sew-In Wefts",
-              "description": "Installation — hair not included",
-              "price": "Starting at $200"
-            },
-            {
-              "name": "I-Tip / K-Tip Extensions",
-              "description": "Installation — hair not included",
-              "price": "Starting at $700"
-            },
-            { "name": "Weft Move-Up", "description": "Maintenance", "price": "Starting at $200" },
-            { "name": "Extension Removal", "description": "Maintenance", "price": "Starting at $100" },
-            {
-              "name": "Premium Extension Hair",
-              "description": "Varies by length, density and color",
-              "price": "Quoted at consultation"
             }
           ]
         },
