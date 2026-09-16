@@ -38,7 +38,7 @@ export default function Contact() {
         eyebrow="Get in Touch"
         title="Contact Us"
         body="Question or comment? Fill out the form below and we'll do our best to respond within a business day."
-        image="/images/empyrean-beauty-gallery-5.jpg"
+        image="/images/chocolate-brunette-waves.jpg"
       />
 
       <Section>

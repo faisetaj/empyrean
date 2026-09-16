@@ -32,6 +32,14 @@ import these directly — there is no database and no API call at runtime.
 
 Images live in `public/images/` and are referenced as `/images/filename.jpg`.
 
+The client photos (September 2026) came straight off iPhones: 2–7 MB each,
+Display P3 colour, rotation stored in EXIF, and GPS coordinates on about half
+of them. Each was rotated upright, converted to sRGB, capped at 1600px on the
+long edge, saved as progressive JPEG at quality 80, and written with **no EXIF
+at all** — which is what removes the location. Do the same for new photos.
+The CMS uploads files exactly as given, so a photo Kayla adds from her phone
+through `/admin` goes live full size and with its metadata intact.
+
 ## The CMS — how Kayla logs in
 
 Decap CMS is served at **`/admin`** (e.g. `empyreanbeautyparlor.com/admin`). It is
@@ -118,25 +126,25 @@ Needs the [Claude GitHub App](https://github.com/apps/claude) installed and an
 
 Live at <https://www.empyreanbeautyparlor.com> since September 2026 — GoDaddy
 DNS points at Netlify, `www` is the primary domain and the bare domain
-redirects to it. Still open:
+redirects to it. Identity is enabled with invite-only registration, and Git
+Gateway is on. Git Gateway is deprecated by Netlify but still works; if it is
+ever switched off, only CMS editing stops and the site is unaffected.
 
-1. **Complete the Identity / Git Gateway steps above** so Kayla can log in at
-   `/admin`. Git Gateway is deprecated by Netlify but still works; if it is
-   ever switched off, only CMS editing stops and the site is unaffected.
-2. **Confirm opening hours** — the current ones are a placeholder assumption,
-   and they are published in the page's structured data, so Google will show
-   them.
-3. **Confirm Facebook / Instagram handles** — currently guessed from the
-   business name.
-4. **Submit the sitemap** (`/sitemap.xml`, generated at build) in Google
+The opening hours stand until Kayla says otherwise. They are published in the
+page's structured data, so Google shows them — update both `site.json` (via
+the CMS) and the JSON-LD in `index.html` if they change.
+
+Still open:
+
+1. **Confirm Facebook / Instagram** — the links are guessed from the business
+   name, and it is not yet known whether she has either account.
+2. **Submit the sitemap** (`/sitemap.xml`, generated at build) in Google
    Search Console.
 
 Nice to have, not blocking:
 
 - Contact form opens the visitor's mail client. Swap for Netlify Forms or
   Formspree if submissions should land in an inbox.
-- Fresh photography. The recovered archive images are placeholders and a few
-  are stock rather than the actual parlor.
 - Kayla's portrait is rendered monochrome to fit the palette; remove
   `grayscale` in `src/pages/About.jsx` to show it in colour.
 

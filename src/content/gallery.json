@@ -2,12 +2,21 @@
   "heading": "Gallery",
   "intro": "A look at the work leaving our chairs.",
   "images": [
-    { "src": "/images/empyrean-beauty-gallery-4.jpg", "alt": "Finished colour and style at Empyrean Beauty" },
-    { "src": "/images/empyrean-beauty-gallery-5.jpg", "alt": "Salon styling at Empyrean Beauty" },
-    { "src": "/images/empyrean-beauty-gallery-6.jpg", "alt": "Cut and finish at Empyrean Beauty" },
-    { "src": "/images/Empyrean-Beauty-Womens-Hair-Slide.jpg", "alt": "Blowout and styling in the salon" },
-    { "src": "/images/Empyrean-Beauty-Slider-Men.jpg", "alt": "Men's cut in progress" },
-    { "src": "/images/Empyrean-Beauty-Women-Right-1.jpg", "alt": "Ladies salon service" },
-    { "src": "/images/Empyrean-Beauty-Men-Left.jpg", "alt": "Gentlemen's cut and colour" }
+    { "src": "/images/golden-blonde-waves.jpg", "alt": "Golden blonde colour in long, loose waves" },
+    { "src": "/images/copper-long-layers.jpg", "alt": "Vivid copper colour worn long and layered" },
+    { "src": "/images/black-glossy-waves.jpg", "alt": "Glossy black hair styled in loose waves" },
+    { "src": "/images/gentlemens-cut.jpg", "alt": "Gentleman's cut, short at the sides with a swept-back top" },
+    { "src": "/images/honey-blonde-waves.jpg", "alt": "Honey blonde in long, loose waves" },
+    { "src": "/images/espresso-brunette-waves.jpg", "alt": "Glossy espresso brunette in loose waves" },
+    { "src": "/images/copper-sleek-finish.jpg", "alt": "Copper colour with a sleek, straight finish" },
+    { "src": "/images/soft-blonde-straight.jpg", "alt": "Soft blonde, straight and past the shoulders" },
+    { "src": "/images/rich-brunette-soft-waves.jpg", "alt": "Rich brunette with soft, face-framing waves" },
+    { "src": "/images/brunette-to-blonde-waves.jpg", "alt": "Brunette melting into blonde, styled in soft waves" },
+    { "src": "/images/dark-brunette-curls.jpg", "alt": "Dark brunette curled into loose waves" },
+    { "src": "/images/bright-blonde-face-framing.jpg", "alt": "Bright blonde with face-framing layers" },
+    { "src": "/images/dark-brunette-long-layers.jpg", "alt": "Dark brunette with long layers and a smooth finish" },
+    { "src": "/images/blonde-loose-curls.jpg", "alt": "Blonde with a soft root, finished in loose curls" },
+    { "src": "/images/ash-blonde-shoulder-length.jpg", "alt": "Ash blonde, cut straight at shoulder length" },
+    { "src": "/images/chocolate-brunette-waves.jpg", "alt": "Chocolate brunette in soft waves" }
   ]
 }

@@ -45,7 +45,7 @@ export default function Gallery() {
         eyebrow="Our Work"
         title={gallery.heading}
         body={gallery.intro}
-        image="/images/empyrean-beauty-gallery-4.jpg"
+        image="/images/copper-sleek-finish.jpg"
       />
 
       <Section>

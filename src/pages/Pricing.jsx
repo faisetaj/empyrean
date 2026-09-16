@@ -18,7 +18,7 @@ export default function Pricing() {
         eyebrow="Services"
         title="Pricing"
         body="Prices are starting points — final pricing depends on hair length, density and the service your consultation calls for."
-        image="/images/Empyrean-Beauty-Women-Right-1.jpg"
+        image="/images/blonde-loose-curls.jpg"
       />
 
       <Section>

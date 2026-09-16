@@ -73,8 +73,8 @@ export default function Home() {
 
           <div className="relative order-1 h-[46vh] min-h-[20rem] overflow-hidden lg:order-2 lg:col-span-7 lg:h-auto lg:min-h-[38rem]">
             <img
-              src="/images/Empyrean-Beauty-Womens-Hair-Slide.jpg"
-              alt="Styling in progress at Empyrean Beauty"
+              src="/images/golden-blonde-waves.jpg"
+              alt="Golden blonde colour in long, loose waves at Empyrean Beauty"
               className="h-full w-full animate-ken-burns object-cover object-center"
             />
           </div>
@@ -111,8 +111,8 @@ export default function Home() {
           <Reveal variant="scale" delay={120} className="md:col-span-7 md:-mt-16 lg:-mt-24">
             <TracedFrame className="md:ml-8 lg:ml-16">
               <img
-                src="/images/empyrean-beauty-gallery-6.jpg"
-                alt="Finished colour and style work from Empyrean Beauty"
+                src="/images/black-glossy-waves.jpg"
+                alt="Glossy black hair styled in loose waves at Empyrean Beauty"
                 className="h-[20rem] w-full object-cover sm:h-[26rem] md:h-[34rem]"
                 loading="lazy"
               />

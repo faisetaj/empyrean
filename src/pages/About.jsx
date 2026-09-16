@@ -12,7 +12,7 @@ export default function About() {
         eyebrow="Empyrean Beauty Parlor"
         title="About Us"
         body={team.intro}
-        image="/images/Empyrean-Beauty-Slider-Men.jpg"
+        image="/images/dark-brunette-curls.jpg"
       />
 
       {/* ── Team ─────────────────────────────────────────────── */}

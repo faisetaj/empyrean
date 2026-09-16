@@ -14,7 +14,7 @@ export default function Blog() {
         eyebrow="From the Parlor"
         title={blog.heading}
         body={blog.intro}
-        image="/images/empyrean-beauty-gallery-6.jpg"
+        image="/images/espresso-brunette-waves.jpg"
       />
 
       <Section>

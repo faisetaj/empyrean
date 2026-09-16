@@ -4,7 +4,7 @@
       "id": "ladies",
       "label": "Ladies",
       "blurb": "Cuts, colour, treatments and extensions.",
-      "image": "/images/Empyrean-Beauty-Women-Right-1.jpg",
+      "image": "/images/rich-brunette-soft-waves.jpg",
       "groups": [
         {
           "name": "Haircuts & Styling",
@@ -94,7 +94,7 @@
       "id": "gentlemen",
       "label": "Gentlemen",
       "blurb": "Cuts and trims.",
-      "image": "/images/Empyrean-Beauty-Men-Left.jpg",
+      "image": "/images/gentlemens-cut.jpg",
       "groups": [
         {
           "name": "Cuts & Trims",
